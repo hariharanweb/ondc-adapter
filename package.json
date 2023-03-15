@@ -9,15 +9,12 @@
     "test:coverage": "vitest run --coverage",
     "lint": "eslint src --fix"
   },
-  "dependencies": {
-    "node-modules": "^1.0.1"
-  },
   "devDependencies": {
-    "pre-commit": "^1.2.2",
-    "vitest": "^0.29.2",
     "eslint": "^8.36.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0"
+    "eslint-plugin-import": "^2.27.5",
+    "pre-commit": "^1.2.2",
+    "vitest": "^0.29.2"
   },
   "pre-commit": [
     "lint"
