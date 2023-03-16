@@ -1,0 +1,22 @@
+{
+  "name": "ondc-adapter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/hariharanweb/ondc-adapter.git",
+  "scripts": {
+    "start": "node --experimental-specifier-resolution=node src/app.js",
+    "test": "vitest --reporter verbose --globals",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src --fix"
+  },
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "pre-commit": "^1.2.2",
+    "vitest": "^0.29.2"
+  },
+  "pre-commit": [
+    "lint"
+  ]
+}
