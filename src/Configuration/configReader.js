@@ -1,10 +1,20 @@
-import CsvReader from "./CsvReader.js";
+import CsvReader from './CsvReader.js';
 
-const configReader = async() => {
-    let data = new CsvReader("../item_mapping_config.csv");
+class ConfigReader {
+  constructor(filename) {
+    this.filename = filename;
+    this.configResponse = new Map();
+  }
+
+  getConfig() {
+    return this.configResponse;
+  }
+
+  async csvReader() {
+    const data = new CsvReader(this.filename);
     await data.fileParser();
-    let mapResponse = data.getMappedResponse();
-    console.log(mapResponse);
+    this.configResponse = data.getMappedResponse();
+  }
 }
 
-configReader();
+export default ConfigReader;
