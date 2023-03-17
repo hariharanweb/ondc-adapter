@@ -14,10 +14,4 @@ describe('PlatformConfigMapper', () => {
         assert.fail();
       });
   });
-
-//   it('should test if response file is same as output ', () => {
-//     const platformConfigMapper = new PlatformConfigMapper();
-//     const res = platformConfigMapper.csvToConfigurationJson("src/Configuration/item_mapping.csv")
-//     expect(res).toBe(2);
-//   });
 });
