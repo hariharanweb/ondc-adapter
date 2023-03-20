@@ -1,0 +1,546 @@
+[
+    {
+        "id": 52,
+        "name": "T-shirt",
+        "slug": "hoodie-with-logo-2",
+        "permalink": "https://woo-freely-maximum-nacho.wpcomstaging.com/product/hoodie-with-logo-2/",
+        "date_created": "2023-03-09T12:48:06",
+        "date_created_gmt": "2023-03-09T07:18:06",
+        "date_modified": "2023-03-09T12:53:10",
+        "date_modified_gmt": "2023-03-09T07:23:10",
+        "type": "simple",
+        "status": "publish",
+        "featured": false,
+        "catalog_visibility": "visible",
+        "description": "<p><img class=\"alignnone size-medium wp-image-53\" src=\"https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/tshit-240x300.webp\" alt=\"\" width=\"240\" height=\"300\" /></p>\n",
+        "short_description": "<p>Hoodie in sweatshirt fabric made from a cotton blend. This is a simple product.</p>\n",
+        "sku": "",
+        "price": "350",
+        "regular_price": "400",
+        "sale_price": "350",
+        "date_on_sale_from": null,
+        "date_on_sale_from_gmt": null,
+        "date_on_sale_to": null,
+        "date_on_sale_to_gmt": null,
+        "on_sale": true,
+        "purchasable": true,
+        "total_sales": 0,
+        "virtual": false,
+        "downloadable": false,
+        "downloads": [],
+        "download_limit": 0,
+        "download_expiry": 0,
+        "external_url": "",
+        "button_text": "",
+        "tax_status": "taxable",
+        "tax_class": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "backorders": "no",
+        "backorders_allowed": false,
+        "backordered": false,
+        "low_stock_amount": null,
+        "sold_individually": false,
+        "weight": "",
+        "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+        },
+        "shipping_required": true,
+        "shipping_taxable": true,
+        "shipping_class": "",
+        "shipping_class_id": 0,
+        "reviews_allowed": true,
+        "average_rating": "0.00",
+        "rating_count": 0,
+        "upsell_ids": [],
+        "cross_sell_ids": [],
+        "parent_id": 0,
+        "purchase_note": "",
+        "categories": [
+            {
+                "id": 1379,
+                "name": "Hoodies",
+                "slug": "hoodies"
+            }
+        ],
+        "tags": [],
+        "images": [
+            {
+                "id": 50,
+                "date_created": "2023-03-09T18:18:05",
+                "date_created_gmt": "2023-03-09T07:18:05",
+                "date_modified": "2023-03-09T18:18:05",
+                "date_modified_gmt": "2023-03-09T07:18:05",
+                "src": "https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/hoodie-with-logo-2.jpg",
+                "name": "hoodie-with-logo-2.jpg",
+                "alt": ""
+            }
+        ],
+        "attributes": [
+            {
+                "id": 1,
+                "name": "Color",
+                "position": 0,
+                "visible": true,
+                "variation": false,
+                "options": [
+                    "Blue"
+                ]
+            }
+        ],
+        "default_attributes": [],
+        "variations": [],
+        "grouped_products": [],
+        "menu_order": 0,
+        "price_html": "<del aria-hidden=\"true\"><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#36;</span>400.00</bdi></span></del> <ins><span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#36;</span>350.00</bdi></span></ins>",
+        "related_ids": [],
+        "meta_data": [
+            {
+                "id": 338,
+                "key": "_wpcom_is_markdown",
+                "value": "1"
+            },
+            {
+                "id": 342,
+                "key": "_last_editor_used_jetpack",
+                "value": "classic-editor"
+            },
+            {
+                "id": 347,
+                "key": "_product_addons",
+                "value": []
+            },
+            {
+                "id": 348,
+                "key": "_product_addons_exclude_global",
+                "value": "0"
+            },
+            {
+                "id": 349,
+                "key": "group_of_quantity",
+                "value": "5"
+            },
+            {
+                "id": 350,
+                "key": "minimum_allowed_quantity",
+                "value": "5"
+            },
+            {
+                "id": 351,
+                "key": "maximum_allowed_quantity",
+                "value": "10"
+            },
+            {
+                "id": 352,
+                "key": "minmax_do_not_count",
+                "value": "no"
+            },
+            {
+                "id": 353,
+                "key": "minmax_cart_exclude",
+                "value": "yes"
+            },
+            {
+                "id": 354,
+                "key": "minmax_category_group_of_exclude",
+                "value": "no"
+            },
+            {
+                "id": 356,
+                "key": "_wpas_done_all",
+                "value": "1"
+            }
+        ],
+        "stock_status": "instock",
+        "has_options": false,
+        "bundled_by": [],
+        "bundle_stock_status": "instock",
+        "bundle_stock_quantity": null,
+        "bundle_virtual": false,
+        "bundle_layout": "",
+        "bundle_add_to_cart_form_location": "",
+        "bundle_editable_in_cart": false,
+        "bundle_sold_individually_context": "",
+        "bundle_item_grouping": "",
+        "bundle_min_size": "",
+        "bundle_max_size": "",
+        "bundled_items": [],
+        "bundle_sell_ids": [],
+        "jetpack_publicize_connections": [],
+        "jetpack_sharing_enabled": true,
+        "jetpack_likes_enabled": true,
+        "brands": [],
+        "_links": {
+            "self": [
+                {
+                    "href": "https://woo-freely-maximum-nacho.wpcomstaging.com/wp-json/wc/v3/products/52"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://woo-freely-maximum-nacho.wpcomstaging.com/wp-json/wc/v3/products"
+                }
+            ]
+        }
+    },
+    {
+        "id": 21,
+        "name": "Vintage Slub Cotton Crewneck T-shirt",
+        "slug": "vintage-slub-cotton-crewneck-t-shirt",
+        "permalink": "https://woo-freely-maximum-nacho.wpcomstaging.com/product/vintage-slub-cotton-crewneck-t-shirt/",
+        "date_created": "2023-03-09T12:04:18",
+        "date_created_gmt": "2023-03-09T06:34:18",
+        "date_modified": "2023-03-09T12:04:18",
+        "date_modified_gmt": "2023-03-09T06:34:18",
+        "type": "simple",
+        "status": "publish",
+        "featured": false,
+        "catalog_visibility": "visible",
+        "description": "<p>Designed with a regular fit of single jersey with ribbed piping around the crew neck.</p>\n",
+        "short_description": "<p>Designed with a regular fit of single jersey with ribbed piping around the crew neck.</p>\n",
+        "sku": "",
+        "price": "40",
+        "regular_price": "40",
+        "sale_price": "",
+        "date_on_sale_from": null,
+        "date_on_sale_from_gmt": null,
+        "date_on_sale_to": null,
+        "date_on_sale_to_gmt": null,
+        "on_sale": false,
+        "purchasable": true,
+        "total_sales": 0,
+        "virtual": false,
+        "downloadable": false,
+        "downloads": [],
+        "download_limit": -1,
+        "download_expiry": -1,
+        "external_url": "",
+        "button_text": "",
+        "tax_status": "taxable",
+        "tax_class": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "backorders": "no",
+        "backorders_allowed": false,
+        "backordered": false,
+        "low_stock_amount": null,
+        "sold_individually": false,
+        "weight": "",
+        "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+        },
+        "shipping_required": true,
+        "shipping_taxable": true,
+        "shipping_class": "",
+        "shipping_class_id": 0,
+        "reviews_allowed": false,
+        "average_rating": "0.00",
+        "rating_count": 0,
+        "upsell_ids": [],
+        "cross_sell_ids": [],
+        "parent_id": 0,
+        "purchase_note": "",
+        "categories": [
+            {
+                "id": 1372,
+                "name": "Men",
+                "slug": "men"
+            },
+            {
+                "id": 1373,
+                "name": "Women",
+                "slug": "women"
+            }
+        ],
+        "tags": [
+            {
+                "id": 1374,
+                "name": "New Arrivals",
+                "slug": "new-arrivals"
+            }
+        ],
+        "images": [
+            {
+                "id": 29,
+                "date_created": "2023-03-09T18:09:20",
+                "date_created_gmt": "2023-03-09T07:09:20",
+                "date_modified": "2023-03-09T18:09:20",
+                "date_modified_gmt": "2023-03-09T07:09:20",
+                "src": "https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/507df-product-2.png",
+                "name": "Placeholder Image",
+                "alt": ""
+            }
+        ],
+        "attributes": [],
+        "default_attributes": [],
+        "variations": [],
+        "grouped_products": [],
+        "menu_order": 0,
+        "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#36;</span>40.00</bdi></span>",
+        "related_ids": [
+            24,
+            20,
+            23
+        ],
+        "meta_data": [
+            {
+                "id": 165,
+                "key": "_headstart_post",
+                "value": "_hs_extra"
+            },
+            {
+                "id": 166,
+                "key": "sharing_disabled",
+                "value": [
+                    null
+                ]
+            },
+            {
+                "id": 167,
+                "key": "switch_like_status",
+                "value": [
+                    null
+                ]
+            },
+            {
+                "id": 168,
+                "key": "_starter_page_template",
+                "value": ""
+            },
+            {
+                "id": 169,
+                "key": "_hs_old_id",
+                "value": "80"
+            },
+            {
+                "id": 170,
+                "key": "_wpas_skip_all_services",
+                "value": "1"
+            },
+            {
+                "id": 171,
+                "key": "_publicize_pending",
+                "value": "1"
+            },
+            {
+                "id": 291,
+                "key": "_elasticsearch_indexed_on",
+                "value": "2023-03-09 06:34:18"
+            }
+        ],
+        "stock_status": "instock",
+        "has_options": false,
+        "bundled_by": [],
+        "bundle_stock_status": "instock",
+        "bundle_stock_quantity": null,
+        "bundle_virtual": false,
+        "bundle_layout": "",
+        "bundle_add_to_cart_form_location": "",
+        "bundle_editable_in_cart": false,
+        "bundle_sold_individually_context": "",
+        "bundle_item_grouping": "",
+        "bundle_min_size": "",
+        "bundle_max_size": "",
+        "bundled_items": [],
+        "bundle_sell_ids": [],
+        "jetpack_publicize_connections": [],
+        "jetpack_sharing_enabled": false,
+        "jetpack_likes_enabled": null,
+        "brands": [],
+        "_links": {
+            "self": [
+                {
+                    "href": "https://woo-freely-maximum-nacho.wpcomstaging.com/wp-json/wc/v3/products/21"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://woo-freely-maximum-nacho.wpcomstaging.com/wp-json/wc/v3/products"
+                }
+            ]
+        }
+    },
+    {
+        "id": 23,
+        "name": "Long-sleeve Vintage Cotton T-shirt in Pink",
+        "slug": "long-sleeve-vintage-cotton-t-shirt-in-pink",
+        "permalink": "https://woo-freely-maximum-nacho.wpcomstaging.com/product/long-sleeve-vintage-cotton-t-shirt-in-pink/",
+        "date_created": "2023-03-09T12:04:17",
+        "date_created_gmt": "2023-03-09T06:34:17",
+        "date_modified": "2023-03-09T12:04:17",
+        "date_modified_gmt": "2023-03-09T06:34:17",
+        "type": "simple",
+        "status": "publish",
+        "featured": false,
+        "catalog_visibility": "visible",
+        "description": "<p>Our best-selling vintage cotton now comes in a perfect-for-fall, long-sleeve style. It’s famous for its heathered texture and softness.</p>\n",
+        "short_description": "<p>Our best-selling vintage cotton now comes in a perfect-for-fall, long-sleeve style. It&#8217;s famous for its heathered texture and softness.</p>\n",
+        "sku": "",
+        "price": "35",
+        "regular_price": "35",
+        "sale_price": "",
+        "date_on_sale_from": null,
+        "date_on_sale_from_gmt": null,
+        "date_on_sale_to": null,
+        "date_on_sale_to_gmt": null,
+        "on_sale": false,
+        "purchasable": true,
+        "total_sales": 0,
+        "virtual": false,
+        "downloadable": false,
+        "downloads": [],
+        "download_limit": -1,
+        "download_expiry": -1,
+        "external_url": "",
+        "button_text": "",
+        "tax_status": "taxable",
+        "tax_class": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "backorders": "no",
+        "backorders_allowed": false,
+        "backordered": false,
+        "low_stock_amount": null,
+        "sold_individually": false,
+        "weight": "",
+        "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+        },
+        "shipping_required": true,
+        "shipping_taxable": true,
+        "shipping_class": "",
+        "shipping_class_id": 0,
+        "reviews_allowed": false,
+        "average_rating": "0.00",
+        "rating_count": 0,
+        "upsell_ids": [],
+        "cross_sell_ids": [],
+        "parent_id": 0,
+        "purchase_note": "",
+        "categories": [
+            {
+                "id": 1372,
+                "name": "Men",
+                "slug": "men"
+            },
+            {
+                "id": 1373,
+                "name": "Women",
+                "slug": "women"
+            }
+        ],
+        "tags": [
+            {
+                "id": 1374,
+                "name": "New Arrivals",
+                "slug": "new-arrivals"
+            }
+        ],
+        "images": [
+            {
+                "id": 30,
+                "date_created": "2023-03-09T18:09:20",
+                "date_created_gmt": "2023-03-09T07:09:20",
+                "date_modified": "2023-03-09T18:09:20",
+                "date_modified_gmt": "2023-03-09T07:09:20",
+                "src": "https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/2a22e-product-1.png",
+                "name": "Placeholder Image",
+                "alt": ""
+            }
+        ],
+        "attributes": [],
+        "default_attributes": [],
+        "variations": [],
+        "grouped_products": [],
+        "menu_order": 0,
+        "price_html": "<span class=\"woocommerce-Price-amount amount\"><bdi><span class=\"woocommerce-Price-currencySymbol\">&#36;</span>35.00</bdi></span>",
+        "related_ids": [
+            21,
+            20,
+            24
+        ],
+        "meta_data": [
+            {
+                "id": 190,
+                "key": "_headstart_post",
+                "value": "_hs_extra"
+            },
+            {
+                "id": 191,
+                "key": "sharing_disabled",
+                "value": [
+                    null
+                ]
+            },
+            {
+                "id": 192,
+                "key": "switch_like_status",
+                "value": [
+                    null
+                ]
+            },
+            {
+                "id": 193,
+                "key": "_starter_page_template",
+                "value": ""
+            },
+            {
+                "id": 194,
+                "key": "_hs_old_id",
+                "value": "78"
+            },
+            {
+                "id": 195,
+                "key": "_wpas_skip_all_services",
+                "value": "1"
+            },
+            {
+                "id": 196,
+                "key": "_publicize_pending",
+                "value": "1"
+            },
+            {
+                "id": 292,
+                "key": "_elasticsearch_indexed_on",
+                "value": "2023-03-09 06:34:17"
+            }
+        ],
+        "stock_status": "instock",
+        "has_options": false,
+        "bundled_by": [],
+        "bundle_stock_status": "instock",
+        "bundle_stock_quantity": null,
+        "bundle_virtual": false,
+        "bundle_layout": "",
+        "bundle_add_to_cart_form_location": "",
+        "bundle_editable_in_cart": false,
+        "bundle_sold_individually_context": "",
+        "bundle_item_grouping": "",
+        "bundle_min_size": "",
+        "bundle_max_size": "",
+        "bundled_items": [],
+        "bundle_sell_ids": [],
+        "jetpack_publicize_connections": [],
+        "jetpack_sharing_enabled": false,
+        "jetpack_likes_enabled": null,
+        "brands": [],
+        "_links": {
+            "self": [
+                {
+                    "href": "https://woo-freely-maximum-nacho.wpcomstaging.com/wp-json/wc/v3/products/23"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://woo-freely-maximum-nacho.wpcomstaging.com/wp-json/wc/v3/products"
+                }
+            ]
+        }
+    }
+]
