@@ -1,0 +1,9 @@
+[
+  {
+    "ONDC": "descriptor.name",
+    "data-type-ONDC": "string",
+    "Woo-Commerce": ".name",
+    "data-type-WooCommerce": "string",
+    "woo-commerce-value": "XYZ"
+  }
+]

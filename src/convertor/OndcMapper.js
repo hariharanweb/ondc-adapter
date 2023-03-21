@@ -6,12 +6,15 @@ export default class OndcMapper {
     this.wcResponseJson = wcResponseJson;
   }
 
-  getMatchedTags() {
+  async getMatchedTags() {
     const arrayWcResponseKeys = this.wcResponseJson.map(
       (wcResponseItem) => Object.keys(wcResponseItem),
     );
-    const matchedOndcTags = arrayWcResponseKeys.map((item) => this.configMapper.filter((match) => match['Woo-Commerce'].includes(`.${item}`)));
-    return matchedOndcTags[0];
+    const inputWcResponseJson = this.wcResponseJson;
+    let matchedOndcTags = (arrayWcResponseKeys.map((item) => this.configMapper.filter((match) => match['Woo-Commerce'].includes(`.${item}`))))[0];
+    const wooCommerceIdvalue = await run(`.[] | { value: ${matchedOndcTags[0]['Woo-Commerce']} | tostring}`, inputWcResponseJson, { input: 'json', output: 'compact' });
+    matchedOndcTags = matchedOndcTags.map((objItem) => ({ ...objItem, 'woo-commerce-value': JSON.parse(wooCommerceIdvalue).value }));
+    return matchedOndcTags;
   }
 
   convert() {
