@@ -1,0 +1,8 @@
+[
+  {
+    "ONDC": "id",
+    "data-type-ONDC": "string",
+    "Woo-Commerce": ".id",
+    "data-type-WooCommerce": "number"
+  }
+]
