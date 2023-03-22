@@ -93,46 +93,6 @@ describe('OndcMapper', () => {
       ],
     );
   });
-  it('should test if name, id and parent id values in matchedJson from platform response ', async () => {
-    const platformResponseJSONWithNameIdAndParentId = [
-      {
-        id: 52,
-        name: 'XYZ',
-        parent_id: 13,
-      },
-    ];
-    const ondcMapper = new OndcMapper(
-      platformMapperConfig,
-      platformResponseJSONWithNameIdAndParentId,
-    );
-    const matchedJsonWithNameIdAndParentIdValues = await ondcMapper.getMatchedTags();
-    expect(matchedJsonWithNameIdAndParentIdValues)
-      .toStrictEqual(
-        [
-          {
-            ONDC: 'id',
-            'data-type-ONDC': 'string',
-            Platform: '.id',
-            'data-type-Platform': 'number',
-            'platform-value': '52',
-          },
-          {
-            ONDC: 'descriptor.name',
-            'data-type-ONDC': 'string',
-            Platform: '.name',
-            'data-type-Platform': 'string',
-            'platform-value': 'XYZ',
-          },
-          {
-            ONDC: 'parent_item_id',
-            'data-type-ONDC': 'string',
-            Platform: '.parent_id',
-            'data-type-Platform': 'number',
-            'platform-value': '13',
-          },
-        ],
-      );
-  });
   it('should test if image value in matchedJson from platform response ', async () => {
     const platformResponseJSONWithImageSrc = [
       {
@@ -178,5 +138,67 @@ describe('OndcMapper', () => {
         },
       ],
     );
+  });
+  it('should test if name, id, parent id, category and image values in matchedJson from platform response ', async () => {
+    const platformResponseJSONWithNameIdAndParentId = [
+      {
+        id: 52,
+        name: 'XYZ',
+        parent_id: 13,
+        images: {
+          src: 'xyz.png',
+        },
+        categories: [
+          {
+            id: 20,
+          },
+        ],
+      },
+    ];
+    const ondcMapper = new OndcMapper(
+      platformMapperConfig,
+      platformResponseJSONWithNameIdAndParentId,
+    );
+    const matchedJsonWithNameIdAndParentIdValues = await ondcMapper.getMatchedTags();
+    expect(matchedJsonWithNameIdAndParentIdValues)
+      .toStrictEqual(
+        [
+          {
+            ONDC: 'id',
+            'data-type-ONDC': 'string',
+            Platform: '.id',
+            'data-type-Platform': 'number',
+            'platform-value': '52',
+          },
+          {
+            ONDC: 'descriptor.name',
+            'data-type-ONDC': 'string',
+            Platform: '.name',
+            'data-type-Platform': 'string',
+            'platform-value': 'XYZ',
+          },
+          {
+            ONDC: 'parent_item_id',
+            'data-type-ONDC': 'string',
+            Platform: '.parent_id',
+            'data-type-Platform': 'number',
+            'platform-value': '13',
+          },
+          {
+            ONDC: 'descriptor.images',
+            'data-type-ONDC': 'string',
+            Platform: '.images.src',
+            'data-type-Platform': 'string',
+            'platform-value': 'xyz.png',
+          },
+          {
+            ONDC: 'category_id',
+            'data-type-ONDC': 'string',
+            Platform: '.categories[0].id',
+            'data-type-Platform': 'number',
+            'platform-value': '20',
+          },
+        ],
+      );
   });
 });
