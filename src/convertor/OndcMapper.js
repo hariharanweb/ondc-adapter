@@ -11,7 +11,9 @@ export default class OndcMapper {
       (platformItem) => Object.keys(platformItem),
     ))[0];
     const inputPlatformResponseJson = this.platformJson;
+    // matching config tags with keys of response json
     const matchedOndcTags = await arrayPlatformResponseKeys.map((item) => this.configMapper.find((matchedItem) => matchedItem.Platform.includes(`.${item}`)));
+    // mapping values extracted from response with matched ondc tags
     const matchedOndcTagsWithPlatformValues = await Promise.all(
       matchedOndcTags.map(async (item) => {
         const itemWithValue = item;
