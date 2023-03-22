@@ -1,25 +1,25 @@
 import { run } from 'node-jq';
 
 export default class OndcMapper {
-  constructor(configMapper, wcResponseJson) {
+  constructor(configMapper, platformJson) {
     this.configMapper = configMapper;
-    this.wcResponseJson = wcResponseJson;
+    this.platformJson = platformJson;
   }
 
   async getMatchedTags() {
-    const arrayWcResponseKeys = (this.wcResponseJson.map(
-      (wcResponseItem) => Object.keys(wcResponseItem),
+    const arrayPlatformResponseKeys = (this.platformJson.map(
+      (platformItem) => Object.keys(platformItem),
     ))[0];
-    const inputWcResponseJson = this.wcResponseJson;
-    const matchedOndcTags = await arrayWcResponseKeys.map((item) => this.configMapper.find((matchedItem) => matchedItem['Woo-Commerce'].includes(`.${item}`)));
-    const matchedOndcTagsWithWooCommerceValues = await Promise.all(
+    const inputPlatformResponseJson = this.platformJson;
+    const matchedOndcTags = await arrayPlatformResponseKeys.map((item) => this.configMapper.find((matchedItem) => matchedItem.Platform.includes(`.${item}`)));
+    const matchedOndcTagsWithPlatformValues = await Promise.all(
       matchedOndcTags.map(async (item) => {
         const itemWithValue = item;
-        const wooCommerceValue = await run(`.[] | { value: ${item['Woo-Commerce']} | to${item['data-type-ONDC']} }`, inputWcResponseJson, { input: 'json', output: 'compact' });
-        itemWithValue['woo-commerce-value'] = JSON.parse(wooCommerceValue).value;
+        const platformValue = await run(`.[] | { value: ${item.Platform} | to${item['data-type-ONDC']} }`, inputPlatformResponseJson, { input: 'json' });
+        itemWithValue['platform-value'] = JSON.parse(platformValue).value;
         return itemWithValue;
       }),
     );
-    return matchedOndcTagsWithWooCommerceValues;
+    return matchedOndcTagsWithPlatformValues;
   }
 }

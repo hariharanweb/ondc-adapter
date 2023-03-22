@@ -1,110 +1,110 @@
 import {
   it, expect, describe,
 } from 'vitest';
-import wcMapperConfig from '../resource/test/expectedMapperOutput.json';
+import platformMapperConfig from '../resource/test/expectedMapperOutput.json';
 import OndcMapper from './OndcMapper';
 
 describe('OndcMapper', () => {
-  it('should test if id value in matchedJson from wooCommmerce response ', async () => {
-    const wcResponseJSONWithID = [
+  it('should test if id value in matchedJson from platform response ', async () => {
+    const platformResponseJSONWithID = [
       {
         id: 52,
       },
     ];
-    const ondcMapper = new OndcMapper(wcMapperConfig, wcResponseJSONWithID);
+    const ondcMapper = new OndcMapper(platformMapperConfig, platformResponseJSONWithID);
     const matchedJsonWithIdValue = await ondcMapper.getMatchedTags();
     expect(matchedJsonWithIdValue).toStrictEqual(
       [
         {
           ONDC: 'id',
           'data-type-ONDC': 'string',
-          'Woo-Commerce': '.id',
-          'data-type-WooCommerce': 'number',
-          'woo-commerce-value': '52',
+          Platform: '.id',
+          'data-type-Platform': 'number',
+          'platform-value': '52',
         },
       ],
     );
   });
-  it('should test if name value in matchedJson from wooCommmerce response ', async () => {
-    const wcResponseJSONWithName = [
+  it('should test if name value in matchedJson from platform response ', async () => {
+    const platformResponseJSONWithName = [
       {
         name: 'XYZ',
       },
     ];
-    const ondcMapper = new OndcMapper(wcMapperConfig, wcResponseJSONWithName);
+    const ondcMapper = new OndcMapper(platformMapperConfig, platformResponseJSONWithName);
     const matchedJsonWithNameValue = await ondcMapper.getMatchedTags();
     expect(matchedJsonWithNameValue).toStrictEqual(
       [
         {
           ONDC: 'descriptor.name',
           'data-type-ONDC': 'string',
-          'Woo-Commerce': '.name',
-          'data-type-WooCommerce': 'string',
-          'woo-commerce-value': 'XYZ',
+          Platform: '.name',
+          'data-type-Platform': 'string',
+          'platform-value': 'XYZ',
         },
       ],
-
     );
   });
-  it('should test if name and id values in matchedJson from wooCommmerce response ', async () => {
-    const wcResponseJSONWithNameAndID = [
+  it('should test if name and id values in matchedJson from platform response ', async () => {
+    const platformResponseJSONWithNameAndID = [
       {
         id: 52,
         name: 'XYZ',
       },
     ];
-    const ondcMapper = new OndcMapper(wcMapperConfig, wcResponseJSONWithNameAndID);
+    const ondcMapper = new OndcMapper(platformMapperConfig, platformResponseJSONWithNameAndID);
     const matchedJsonWithNameAndIdValue = await ondcMapper.getMatchedTags();
     expect(matchedJsonWithNameAndIdValue).toStrictEqual(
       [
         {
           ONDC: 'id',
           'data-type-ONDC': 'string',
-          'Woo-Commerce': '.id',
-          'data-type-WooCommerce': 'number',
-          'woo-commerce-value': '52',
+          Platform: '.id',
+          'data-type-Platform': 'number',
+          'platform-value': '52',
         },
         {
           ONDC: 'descriptor.name',
           'data-type-ONDC': 'string',
-          'Woo-Commerce': '.name',
-          'data-type-WooCommerce': 'string',
-          'woo-commerce-value': 'XYZ',
+          Platform: '.name',
+          'data-type-Platform': 'string',
+          'platform-value': 'XYZ',
         },
       ],
-
     );
   });
-  it('should test if parent id value in matchedJson from wooCommmerce response ', async () => {
-    const wcResponseJSONWithParentItemId = [
+  it('should test if parent id value in matchedJson from platform response ', async () => {
+    const platformResponseJSONWithParentItemId = [
       {
         parent_id: 13,
       },
     ];
-    const ondcMapper = new OndcMapper(wcMapperConfig, wcResponseJSONWithParentItemId);
+    const ondcMapper = new OndcMapper(platformMapperConfig, platformResponseJSONWithParentItemId);
     const matchedJsonWithParentIdValue = await ondcMapper.getMatchedTags();
     expect(matchedJsonWithParentIdValue).toStrictEqual(
       [
         {
           ONDC: 'parent_item_id',
           'data-type-ONDC': 'string',
-          'Woo-Commerce': '.parent_id',
-          'data-type-WooCommerce': 'number',
-          'woo-commerce-value': '13',
+          Platform: '.parent_id',
+          'data-type-Platform': 'number',
+          'platform-value': '13',
         },
       ],
-
     );
   });
-  it('should test if name, id and parent id values in matchedJson from wooCommmerce response ', async () => {
-    const wcResponseJSONWithNameIdAndParentId = [
+  it('should test if name, id and parent id values in matchedJson from platform response ', async () => {
+    const platformResponseJSONWithNameIdAndParentId = [
       {
         id: 52,
         name: 'XYZ',
         parent_id: 13,
       },
     ];
-    const ondcMapper = new OndcMapper(wcMapperConfig, wcResponseJSONWithNameIdAndParentId);
+    const ondcMapper = new OndcMapper(
+      platformMapperConfig,
+      platformResponseJSONWithNameIdAndParentId,
+    );
     const matchedJsonWithNameIdAndParentIdValues = await ondcMapper.getMatchedTags();
     expect(matchedJsonWithNameIdAndParentIdValues)
       .toStrictEqual(
@@ -112,53 +112,51 @@ describe('OndcMapper', () => {
           {
             ONDC: 'id',
             'data-type-ONDC': 'string',
-            'Woo-Commerce': '.id',
-            'data-type-WooCommerce': 'number',
-            'woo-commerce-value': '52',
+            Platform: '.id',
+            'data-type-Platform': 'number',
+            'platform-value': '52',
           },
           {
             ONDC: 'descriptor.name',
             'data-type-ONDC': 'string',
-            'Woo-Commerce': '.name',
-            'data-type-WooCommerce': 'string',
-            'woo-commerce-value': 'XYZ',
+            Platform: '.name',
+            'data-type-Platform': 'string',
+            'platform-value': 'XYZ',
           },
           {
             ONDC: 'parent_item_id',
             'data-type-ONDC': 'string',
-            'Woo-Commerce': '.parent_id',
-            'data-type-WooCommerce': 'number',
-            'woo-commerce-value': '13',
+            Platform: '.parent_id',
+            'data-type-Platform': 'number',
+            'platform-value': '13',
           },
         ],
-
       );
   });
-  it('should test if image value in matchedJson from wooCommmerce response ', async () => {
-    const wcResponseJSONWithImageSrc = [
+  it('should test if image value in matchedJson from platform response ', async () => {
+    const platformResponseJSONWithImageSrc = [
       {
         images: {
           src: 'xyz.png',
         },
       },
     ];
-    const ondcMapper = new OndcMapper(wcMapperConfig, wcResponseJSONWithImageSrc);
+    const ondcMapper = new OndcMapper(platformMapperConfig, platformResponseJSONWithImageSrc);
     const matchedJsonWithImageSrcValue = await ondcMapper.getMatchedTags();
     expect(matchedJsonWithImageSrcValue).toStrictEqual(
       [
         {
           ONDC: 'descriptor.images',
           'data-type-ONDC': 'string',
-          'Woo-Commerce': '.images.src',
-          'data-type-WooCommerce': 'string',
-          'woo-commerce-value': 'xyz.png',
+          Platform: '.images.src',
+          'data-type-Platform': 'string',
+          'platform-value': 'xyz.png',
         },
       ],
-
     );
   });
-  it('should test if category id value in matchedJson from wooCommmerce response ', async () => {
-    const wcResponseJSONWithCategoryId = [
+  it('should test if category id value in matchedJson from platform response ', async () => {
+    const platformResponseJSONWithCategoryId = [
       {
         categories: [
           {
@@ -167,19 +165,18 @@ describe('OndcMapper', () => {
         ],
       },
     ];
-    const ondcMapper = new OndcMapper(wcMapperConfig, wcResponseJSONWithCategoryId);
+    const ondcMapper = new OndcMapper(platformMapperConfig, platformResponseJSONWithCategoryId);
     const matchedJsonWithCategoryIdValue = await ondcMapper.getMatchedTags();
     expect(matchedJsonWithCategoryIdValue).toStrictEqual(
       [
         {
           ONDC: 'category_id',
           'data-type-ONDC': 'string',
-          'Woo-Commerce': '.categories[0].id',
-          'data-type-WooCommerce': 'number',
-          'woo-commerce-value': '20',
+          Platform: '.categories[0].id',
+          'data-type-Platform': 'number',
+          'platform-value': '20',
         },
       ],
-
     );
   });
 });

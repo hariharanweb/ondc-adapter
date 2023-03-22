@@ -2,32 +2,32 @@
     {
       "ONDC": "id",
       "data-type-ONDC": "string",
-      "Woo-Commerce": ".id",
-      "data-type-WooCommerce": "number"
+      "Platform": ".id",
+      "data-type-Platform": "number"
     },
     {
       "ONDC": "parent_item_id",
       "data-type-ONDC": "string",
-      "Woo-Commerce": ".parent_id",
-      "data-type-WooCommerce": "number"
+      "Platform": ".parent_id",
+      "data-type-Platform": "number"
     },
     {
       "ONDC": "descriptor.name",
       "data-type-ONDC": "string",
-      "Woo-Commerce": ".name",
-      "data-type-WooCommerce": "string"
+      "Platform": ".name",
+      "data-type-Platform": "string"
     },
     {
       "ONDC": "descriptor.images",
       "data-type-ONDC": "string",
-      "Woo-Commerce": ".images.src",
-      "data-type-WooCommerce": "string"
+      "Platform": ".images.src",
+      "data-type-Platform": "string"
     },
     {
       "ONDC": "category_id",
       "data-type-ONDC": "string",
-      "Woo-Commerce": ".categories[0].id",
-      "data-type-WooCommerce": "number"
+      "Platform": ".categories[0].id",
+      "data-type-Platform": "number"
     }
   ]
 
