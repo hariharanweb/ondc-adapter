@@ -1,9 +1,0 @@
-[
-  {
-    "ONDC": "parent_item_id",
-    "data-type-ONDC": "string",
-    "Woo-Commerce": ".parent_id",
-    "data-type-WooCommerce": "number",
-    "woo-commerce-value": "13"
-  }
-]

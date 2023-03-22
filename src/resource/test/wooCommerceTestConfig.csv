@@ -2,3 +2,5 @@ ONDC,data-type-ONDC,Woo-Commerce,data-type-WooCommerce
 id,string,.id,number
 parent_item_id,string,.parent_id,number
 descriptor.name,string,.name,string
+descriptor.images,string,.images.src,string
+category_id,string,.categories[0].id,number
