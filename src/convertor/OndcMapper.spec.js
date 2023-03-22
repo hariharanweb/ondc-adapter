@@ -9,6 +9,8 @@ import wcResponseJSONWithID from '../resource/test/wcResponseWithID.json';
 import wcResponseJSONWithName from '../resource/test/wcResponseWithName.json';
 import expectedMatchedValueWithName from '../resource/test/ExpectedmatchedJsonWithName.json';
 // import wcResponseJSONWithNameAndID from '../resource/test/wcResponseWithNameAndID.json';
+// import expectedMatchedValueWithNameAndId
+// from '../resource/test/ExpectedmatchedJsonWithNameAndId.json';
 
 describe('OndcMapper', () => {
   it('should test if id value in matchedJson from wooCommmerce response ', async () => {
@@ -21,11 +23,11 @@ describe('OndcMapper', () => {
     const matchedJsonWithNameValue = await ondcMapper.getMatchedTags();
     expect(matchedJsonWithNameValue).toStrictEqual(expectedMatchedValueWithName);
   });
-  // it('should test if name and id values in matchedJson from wooCommmerce response ',
-  // async () => {
+  // it('should test if name and
+  // id values in matchedJson from wooCommmerce response ', async () => {
   //   const ondcMapper = new OndcMapper(wcMapperConfig, wcResponseJSONWithNameAndID);
   //   const matchedJsonWithNameValue = await ondcMapper.getMatchedTags();
-  //   expect(matchedJsonWithNameValue).toStrictEqual(expectedMatchedValueWithName);
+  //   expect(matchedJsonWithNameValue).toStrictEqual(expectedMatchedValueWithNameAndId);
   // });
   /*
   it('should test if ondc id is mapped with platform id ', async () => {
