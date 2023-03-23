@@ -92,7 +92,7 @@ describe('OndcMapper', () => {
     );
   });
   it('should match ondc tags to platform tags ', async () => {
-    const platformResponseJSONWithNameIdAndParentId = [
+    const platformResponseJSON = [
       {
         id: 52,
         name: 'XYZ',
@@ -109,7 +109,7 @@ describe('OndcMapper', () => {
     ];
     const ondcMapper = new OndcMapper(
       platformMapperConfig,
-      platformResponseJSONWithNameIdAndParentId,
+      platformResponseJSON,
     );
     const matchedJsonWithNameIdAndParentIdValues = await ondcMapper.getMatchedTags();
     expect(matchedJsonWithNameIdAndParentIdValues)
