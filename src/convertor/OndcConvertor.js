@@ -1,20 +1,28 @@
 import { run } from 'node-jq';
 
 export default class OndcConvertor {
-  constructor(inputJson) {
-    this.inputJson = inputJson;
+  constructor(ondcMatchedTagsJson) {
+    this.ondcMatchedTagsJson = ondcMatchedTagsJson;
   }
 
   async convert() {
     const convertedOndcResponse = await Promise.all(
-      this.inputJson.map(async (item) => {
-        let ondcItemValue;
-        if (item.ONDC.split('.').length > 1) {
-          ondcItemValue = await run(`. | { ${item.ONDC.split('.')[0]}: { ${item.ONDC.split('.')[1]}: "${item['platform-value']}" | to${item['data-type-ONDC']} }}`, item, { input: 'json' });
+      this.ondcMatchedTagsJson.map(async (tag) => {
+        let ondcTagJsonString;
+        if (tag.ONDC.split('.').length > 1) {
+          ondcTagJsonString = await run(
+            `. | { ${tag.ONDC.split('.')[0]}: { ${tag.ONDC.split('.')[1]}: "${tag['platform-value']}" | to${tag['data-type-ONDC']} }}`,
+            tag,
+            { input: 'json' },
+          );
         } else {
-          ondcItemValue = await run(`. | { ${item.ONDC}: "${item['platform-value']}" | to${item['data-type-ONDC']} }`, item, { input: 'json' });
+          ondcTagJsonString = await run(
+            `. | { ${tag.ONDC}: "${tag['platform-value']}" | to${tag['data-type-ONDC']} }`,
+            tag,
+            { input: 'json' },
+          );
         }
-        return JSON.parse(ondcItemValue);
+        return JSON.parse(ondcTagJsonString);
       }),
     );
     return convertedOndcResponse;
