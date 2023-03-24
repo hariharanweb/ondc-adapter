@@ -25,6 +25,20 @@ export default class OndcConvertor {
         return JSON.parse(ondcTagJsonString);
       }),
     );
-    return convertedOndcResponse;
+    let convertedOndcResponseMerged = {};
+    const convertedOndcResponseItems = [];
+    convertedOndcResponse.forEach((ondcTag) => {
+      const ondcTagKey = Object.keys(ondcTag)[0];
+      if (ondcTagKey in convertedOndcResponseMerged) {
+        convertedOndcResponseMerged[ondcTagKey] = {
+          ...convertedOndcResponseMerged[ondcTagKey],
+          ...ondcTag[ondcTagKey],
+        };
+      } else {
+        convertedOndcResponseMerged = { ...convertedOndcResponseMerged, ...ondcTag };
+      }
+    });
+    convertedOndcResponseItems.push(convertedOndcResponseMerged);
+    return convertedOndcResponseItems;
   }
 }
