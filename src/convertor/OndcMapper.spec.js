@@ -48,9 +48,9 @@ describe('OndcMapper', () => {
   it('should match ondc nested object to platform nested object ', async () => {
     const platformResponseJSONWithImageSrc = [
       {
-        images: {
+        images: [{
           src: 'xyz.png',
-        },
+        }],
       },
     ];
     const ondcMapper = new OndcMapper(platformMapperConfig, platformResponseJSONWithImageSrc);
@@ -60,7 +60,7 @@ describe('OndcMapper', () => {
         {
           ONDC: 'descriptor.images',
           'data-type-ONDC': 'string',
-          Platform: '.images.src',
+          Platform: '.images[0].src',
           'data-type-Platform': 'string',
           'platform-value': 'xyz.png',
         },
@@ -97,9 +97,9 @@ describe('OndcMapper', () => {
         id: 52,
         name: 'XYZ',
         parent_id: 13,
-        images: {
+        images: [{
           src: 'xyz.png',
-        },
+        }],
         categories: [
           {
             id: 20,
@@ -139,7 +139,7 @@ describe('OndcMapper', () => {
           {
             ONDC: 'descriptor.images',
             'data-type-ONDC': 'string',
-            Platform: '.images.src',
+            Platform: '.images[0].src',
             'data-type-Platform': 'string',
             'platform-value': 'xyz.png',
           },

@@ -12,16 +12,25 @@ export default class OndcMapper {
     ))[0];
     const platformResponseJson = this.inputPlatformResponseJson;
     // matching config tags with keys of response json
-    const matchedOndcTags = await arrayPlatformResponseKeys.map((item) => this.configMapper.find((matchedItem) => matchedItem.Platform.includes(`.${item}`)));
+    const matchedOndcTags = await arrayPlatformResponseKeys.map((item) => this.configMapper.find((matchedItem) => matchedItem.Platform.includes(`.${item}`))).filter((matchedOndcTag) => matchedOndcTag !== undefined);
     // mapping values extracted from response with matched ondc tags
     const matchedOndcTagsWithPlatformValues = await Promise.all(
       matchedOndcTags.map(async (tag) => {
         const itemWithValue = tag;
-        const platformValue = await run(
-          `.[] | { value: ${tag.Platform} | to${tag['data-type-ONDC']} }`,
-          platformResponseJson,
-          { input: 'json' },
-        );
+        let platformValue;
+        if (tag['data-type-ONDC'] === 'boolean') {
+          platformValue = await run(
+            `.[] | { value: ${tag.Platform} }`,
+            platformResponseJson,
+            { input: 'json' },
+          );
+        } else {
+          platformValue = await run(
+            `.[] | { value: ${tag.Platform} | to${tag['data-type-ONDC']} }`,
+            platformResponseJson,
+            { input: 'json' },
+          );
+        }
         itemWithValue['platform-value'] = JSON.parse(platformValue).value;
         return itemWithValue;
       }),

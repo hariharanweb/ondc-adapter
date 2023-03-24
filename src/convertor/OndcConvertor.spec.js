@@ -57,9 +57,9 @@ describe('OndcConvertor', () => {
           id: 52,
           name: 'XYZ',
           parent_id: 13,
-          images: {
+          images: [{
             src: 'xyz.png',
-          },
+          }],
           categories: [
             {
               id: 20,

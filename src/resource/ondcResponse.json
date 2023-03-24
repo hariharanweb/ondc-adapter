@@ -1,0 +1,56 @@
+[
+    {
+        "id": "52",
+        "descriptor":{
+            "name":"T-shirt",
+        "images": "https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/hoodie-with-logo-2.jpg",
+            "long_desc":"<p><img class=\"alignnone size-medium wp-image-53\" src=\"https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/tshit-240x300.webp\" alt=\"\" width=\"240\" height=\"300\" /></p>\n",
+            "short_desc":"<p>Hoodie in sweatshirt fabric made from a cotton blend. This is a simple product.</p>\n"
+        },
+        "price":{
+            "value":"350",
+            "maximum_value":"400"
+        },
+        "recommended": true,
+        "rating": 0.00,
+        "parent_item_id": "0",
+        "category_id":"1379",
+        "location_id": ""
+    },
+    {
+        "id": "21",
+        "descriptor":{
+            "name":"Vintage Slub Cotton Crewneck T-shirt",
+        "images": "https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/507df-product-2.png",
+            "long_desc":"<p>Designed with a regular fit of single jersey with ribbed piping around the crew neck.</p>\n",
+            "short_desc":"<p>Designed with a regular fit of single jersey with ribbed piping around the crew neck.</p>\n"
+        },
+        "price":{
+            "value":"40",
+            "maximum_value":"40"
+        },
+        "recommended": false,
+        "rating": 0.00,
+        "parent_item_id": "0",
+        "category_id":"1372",
+        "location_id": ""
+    },
+    {
+        "id": "23",
+        "descriptor":{
+            "name":"Long-sleeve Vintage Cotton T-shirt in Pink",
+        "images": "https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/2a22e-product-1.png",
+            "long_desc":"<p>Our best-selling vintage cotton now comes in a perfect-for-fall, long-sleeve style. It’s famous for its heathered texture and softness.</p>\n",
+            "short_desc":"<p>Our best-selling vintage cotton now comes in a perfect-for-fall, long-sleeve style. It&#8217;s famous for its heathered texture and softness.</p>\n"
+        },
+        "price":{
+            "value":"35",
+            "maximum_value":"35"
+        },
+        "recommended": false,
+        "rating": 0.00,
+        "parent_item_id": "0",
+        "category_id":"1372",
+        "location_id": ""
+    }
+]

@@ -20,7 +20,7 @@
     {
       "ONDC": "descriptor.images",
       "data-type-ONDC": "string",
-      "Platform": ".images.src",
+      "Platform": ".images[0].src",
       "data-type-Platform": "string"
     },
     {
