@@ -4,8 +4,8 @@ import {
 import PlatformConvertor from './PlatformConvertor';
 
 describe('PlatformConvertor', () => {
-  it('should convert platform items to ondc items according to given config', async () => {
-    const platformResponseItem = [
+  it('should convert one platform item to one ondc item according to given config', async () => {
+    const platformItemResponse = [
       {
         id: 52,
         name: 'T-shirt',
@@ -193,7 +193,7 @@ describe('PlatformConvertor', () => {
         },
       },
     ];
-    const ondcResponseItem = [{
+    const ondcItemResponse = [{
       id: '52',
       descriptor: {
         name: 'T-shirt',
@@ -211,8 +211,8 @@ describe('PlatformConvertor', () => {
       category_id: '1379',
       location_id: '',
     }];
-    const platformConvertor = new PlatformConvertor(platformResponseItem);
+    const platformConvertor = new PlatformConvertor(platformItemResponse);
     const actualOndcResponseJson = await platformConvertor.convert();
-    expect(actualOndcResponseJson).toStrictEqual(ondcResponseItem);
+    expect(actualOndcResponseJson).toStrictEqual(ondcItemResponse);
   });
 });

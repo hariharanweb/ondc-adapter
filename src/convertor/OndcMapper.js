@@ -17,20 +17,12 @@ export default class OndcMapper {
     const matchedOndcTagsWithPlatformValues = await Promise.all(
       matchedOndcTags.map(async (tag) => {
         const itemWithValue = tag;
-        let platformValue;
-        if (tag['data-type-ONDC'] === 'boolean') {
-          platformValue = await run(
-            `.[] | { value: ${tag.Platform} }`,
-            platformResponseJson,
-            { input: 'json' },
-          );
-        } else {
-          platformValue = await run(
-            `.[] | { value: ${tag.Platform} | to${tag['data-type-ONDC']} }`,
-            platformResponseJson,
-            { input: 'json' },
-          );
-        }
+        const platformValueString = (tag['data-type-ONDC'] === 'boolean' ? '' : `| to${tag['data-type-ONDC']}`);
+        const platformValue = await run(
+          `.[] | { value: ${tag.Platform} ${platformValueString} }`,
+          platformResponseJson,
+          { input: 'json' },
+        );
         itemWithValue['platform-value'] = JSON.parse(platformValue).value;
         return itemWithValue;
       }),
