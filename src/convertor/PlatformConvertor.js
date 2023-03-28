@@ -1,5 +1,5 @@
 import PlatformConfigMapper from '../configuration/PlatformConfigMapper';
-import OndcMapper from './OndcMapper';
+import OndcItemMapper from './OndcItemMapper';
 import OndcConvertor from './OndcConvertor';
 
 export default class PlatformConvertor {
@@ -10,8 +10,8 @@ export default class PlatformConvertor {
   async convert() {
     const csvparser = new PlatformConfigMapper('src/resource/item_mapping_config.csv');
     const csvDataJson = await csvparser.parseCSV();
-    const ondcMapper = new OndcMapper(csvDataJson, this.platformResponseJson);
-    const ondcMatchedTags = await ondcMapper.getMatchedTags();
+    const ondcMapper = new OndcItemMapper(csvDataJson);
+    const ondcMatchedTags = await ondcMapper.map(this.platformResponseJson);
     const ondcConvertor = new OndcConvertor(ondcMatchedTags);
     const convertedOndcResponse = await ondcConvertor.convert();
     return convertedOndcResponse;
