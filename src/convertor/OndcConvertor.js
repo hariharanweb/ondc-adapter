@@ -12,7 +12,7 @@ export default class OndcConvertor {
         const dataTypeExpression = ((tag.ondcDataType === 'boolean' || tag.platformValue === '')
           ? '' : `| to${tag.ondcDataType}`);
         const platformResponseFormatter = (tag.platformValue.toString().includes('"')
-        
+
           ? tag.platformValue.replace(/"/g, '\\"') : tag.platformValue);
         const platformResponseValue = (tag.ondcDataType === 'boolean' ? platformResponseFormatter : `"${platformResponseFormatter}"`);
         if (tag.ondc.split('.').length > 1) {
