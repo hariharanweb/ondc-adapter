@@ -6,11 +6,11 @@ export default class OndcItemMapper {
   }
 
   async map(platformItem) {
-    //  `. | '${config.platform} == '' then ". | ${config.platform}" else ${platformValueString}'`,
+    this.configs = this.configs.filter((config) => config.platform !== '');
     return Promise.all(this.configs.map(async (config) => {
       const platformValueString = (config.ondcDataType === 'boolean' ? '' : `| to${config.ondcDataType}`);
       const platformValue = await run(
-        `. | ${config.platform} ${platformValueString}`,
+        `. | if (${config.platform} | tostring | length > 0) then ${config.platform} ${platformValueString} else ${config.platform} end`,
         platformItem,
         { input: 'json' },
       );
