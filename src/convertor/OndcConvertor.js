@@ -1,4 +1,4 @@
-import { run } from 'node-jq';
+import PlatformFormatter from '../formatter/PlatformFormatter';
 
 export default class OndcConvertor {
   constructor(ondcMatchedTagsJson) {
@@ -15,20 +15,19 @@ export default class OndcConvertor {
 
           ? tag.platformValue.replace(/"/g, '\\"') : tag.platformValue);
         const platformResponseValue = (tag.ondcDataType === 'boolean' ? platformResponseFormatter : `"${platformResponseFormatter}"`);
+
         if (tag.ondc.split('.').length > 1) {
-          ondcTagJsonString = await run(
+          ondcTagJsonString = await PlatformFormatter.format(
             `. | { ${tag.ondc.split('.')[0]}: { ${tag.ondc.split('.')[1]}: ${platformResponseValue} ${(dataTypeExpression)} }}`,
             tag,
-            { input: 'json' },
           );
         } else {
-          ondcTagJsonString = await run(
+          ondcTagJsonString = await PlatformFormatter.format(
             `. | { ${tag.ondc}: ${platformResponseValue} ${dataTypeExpression} }`,
             tag,
-            { input: 'json' },
           );
         }
-        return JSON.parse(ondcTagJsonString);
+        return ondcTagJsonString;
       }),
     );
     let convertedOndcResponseMerged = {};

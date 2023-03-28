@@ -1,4 +1,4 @@
-import { run } from 'node-jq';
+import PlatformFormatter from '../formatter/PlatformFormatter';
 
 export default class OndcItemMapper {
   constructor(configs) {
@@ -9,13 +9,9 @@ export default class OndcItemMapper {
     this.configs = this.configs.filter((config) => config.platform !== '');
     return Promise.all(this.configs.map(async (config) => {
       const platformValueString = (config.ondcDataType === 'boolean' ? '' : `| to${config.ondcDataType}`);
-      const platformValue = await run(
-        `. | if (${config.platform} | tostring | length > 0) then ${config.platform} ${platformValueString} else ${config.platform} end`,
-        platformItem,
-        { input: 'json' },
-      );
+      const platformValue = await PlatformFormatter.format(`. | if (${config.platform} | tostring | length > 0) then ${config.platform} ${platformValueString} else ${config.platform} end`, platformItem);
       return {
-        ...config, platformValue: JSON.parse(platformValue),
+        ...config, platformValue,
       };
     }));
   }
