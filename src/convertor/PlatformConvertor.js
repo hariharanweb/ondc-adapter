@@ -12,8 +12,7 @@ export default class PlatformConvertor {
     const csvDataJson = await csvparser.parseCSV();
     const ondcMapper = new OndcItemMapper(csvDataJson);
     const ondcMatchedTags = await ondcMapper.map(this.platformResponseJson);
-    const ondcConvertor = new OndcConvertor(ondcMatchedTags);
-    const convertedOndcResponse = await ondcConvertor.convert();
+    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedTags);
     return convertedOndcResponse;
   }
 }

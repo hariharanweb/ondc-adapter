@@ -1,13 +1,9 @@
 import PlatformFormatter from '../formatter/PlatformFormatter';
 
 export default class OndcConvertor {
-  constructor(ondcMappedTags) {
-    this.ondcMappedTags = ondcMappedTags;
-  }
-
-  async convert() {
+  static async convert(ondcMappedTags) {
     const convertedOndcResponse = await Promise.all(
-      this.ondcMappedTags.map(async (tag) => {
+      ondcMappedTags.map(async (tag) => {
         let ondcMappedResponse;
         const ondcValueType = ((tag.ondcDataType === 'boolean' || tag.platformValue === '')
           ? '' : `| to${tag.ondcDataType}`);

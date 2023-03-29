@@ -18,8 +18,7 @@ describe('OndcConvertor', () => {
     const ondcMatchedTags = await ondcMapper.map({
       id: 52,
     });
-    const ondcConvertor = new OndcConvertor(ondcMatchedTags);
-    const convertedOndcResponse = await ondcConvertor.convert();
+    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedTags);
     expect(convertedOndcResponse).toStrictEqual(
       {
         id: '52',
@@ -40,8 +39,7 @@ describe('OndcConvertor', () => {
     const ondcMatchedTags = await ondcMapper.map({
       name: 'XYZ',
     });
-    const ondcConvertor = new OndcConvertor(ondcMatchedTags);
-    const convertedOndcResponse = await ondcConvertor.convert();
+    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedTags);
     expect(convertedOndcResponse).toStrictEqual(
       {
         descriptor: {
@@ -65,8 +63,7 @@ describe('OndcConvertor', () => {
         },
       ],
     });
-    const ondcConvertor = new OndcConvertor(ondcMatchedTags);
-    const convertedOndcResponse = await ondcConvertor.convert();
+    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedTags);
     expect(convertedOndcResponse)
       .toStrictEqual(
         {
