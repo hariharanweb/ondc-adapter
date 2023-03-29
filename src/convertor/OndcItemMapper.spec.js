@@ -16,8 +16,8 @@ describe('OndcItemMapper', () => {
       platformDataType: 'string',
     }];
     const ondcItemMapper = new OndcItemMapper(config);
-    const matchedJsonWithNameValue = await ondcItemMapper.map(responseWithName);
-    expect(matchedJsonWithNameValue).toStrictEqual(
+    const mappedNameValue = await ondcItemMapper.map(responseWithName);
+    expect(mappedNameValue).toStrictEqual(
       [
         {
           ondc: 'descriptor.name',
@@ -41,8 +41,8 @@ describe('OndcItemMapper', () => {
         platformDataType: 'number',
       }];
     const ondcItemMapper = new OndcItemMapper(config);
-    const matchedJsonWithIdValue = await ondcItemMapper.map(responseWithId);
-    expect(matchedJsonWithIdValue).toStrictEqual(
+    const mappedIdValue = await ondcItemMapper.map(responseWithId);
+    expect(mappedIdValue).toStrictEqual(
       [
         {
           ondc: 'id',
@@ -69,8 +69,8 @@ describe('OndcItemMapper', () => {
     const ondcItemMapper = new OndcItemMapper(
       config,
     );
-    const matchedJsonWithImageSrcValue = await ondcItemMapper.map(responseWithImages);
-    expect(matchedJsonWithImageSrcValue).toStrictEqual(
+    const mappedImageSrcValue = await ondcItemMapper.map(responseWithImages);
+    expect(mappedImageSrcValue).toStrictEqual(
       [
         {
           ondc: 'descriptor.images',
@@ -99,8 +99,8 @@ describe('OndcItemMapper', () => {
     const ondcItemMapper = new OndcItemMapper(
       config,
     );
-    const matchedJsonWithCategoryIdValue = await ondcItemMapper.map(responseWithCategory);
-    expect(matchedJsonWithCategoryIdValue).toStrictEqual(
+    const mappedCategoryIdValue = await ondcItemMapper.map(responseWithCategory);
+    expect(mappedCategoryIdValue).toStrictEqual(
       [
         {
           ondc: 'category_id',
@@ -129,8 +129,8 @@ describe('OndcItemMapper', () => {
     const ondcItemMapper = new OndcItemMapper(
       platformMapperConfig,
     );
-    const matchedJsonWithNameIdAndParentIdValues = await ondcItemMapper.map(response);
-    expect(matchedJsonWithNameIdAndParentIdValues)
+    const mappedResponse = await ondcItemMapper.map(response);
+    expect(mappedResponse)
       .toStrictEqual(
         [
           {

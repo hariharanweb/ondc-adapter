@@ -11,12 +11,12 @@ describe('PlatformConfigMapper', () => {
     expect(csvData).toHaveLength(5);
   });
 
-  it('should test if faulty csv file is throwing error', async () => {
+  it('should test if faulty csv file is throwing error ', async () => {
     const csvparser = new PlatformConfigMapper('src/resource/test/testConfig.csv');
     try {
       await csvparser.parseCSV();
       expect(false).toBeTruthy();
-    } catch (err) {
+    } catch (error) {
       expect(true).toBeTruthy();
     }
   });

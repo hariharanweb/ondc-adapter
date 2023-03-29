@@ -4,7 +4,7 @@ import {
 import PlatformFormatter from './PlatformFormatter';
 
 describe('Platform Formatter', () => {
-  it('should format input according to filter', async () => {
+  it('should format input according to filter ', async () => {
     const expectedFormattedResponse = 20;
     const filter = ' . | .id';
     const input = {

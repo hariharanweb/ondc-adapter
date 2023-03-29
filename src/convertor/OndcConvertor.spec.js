@@ -27,7 +27,7 @@ describe('OndcConvertor', () => {
     );
   });
 
-  it('should convert platform item name to ondc item name', async () => {
+  it('should convert platform item name to ondc item name ', async () => {
     const config = [{
       ondc: 'descriptor.name',
       ondcDataType: 'string',
@@ -50,7 +50,7 @@ describe('OndcConvertor', () => {
       },
     );
   });
-  it('should convert platform items to ondc items', async () => {
+  it('should convert platform items to ondc items ', async () => {
     const ondcMapper = new OndcItemMapper(platformMapperConfig);
     const ondcMatchedTags = await ondcMapper.map({
       id: 52,
