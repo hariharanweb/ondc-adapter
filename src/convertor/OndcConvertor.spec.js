@@ -2,22 +2,38 @@ import {
   it, expect, describe,
 } from 'vitest';
 import OndcConvertor from './OndcConvertor';
-import platformMapperConfig from '../resource/test/expectedMapperOutput.json';
-import OndcItemMapper from './OndcItemMapper';
 
 describe('OndcConvertor', () => {
+  it('should convert platform image to ondc image ', async () => {
+    const ondcMatchedTags = [
+      {
+        ondc: 'descriptor.images',
+        ondcDataType: '',
+        platform: '.images | map(.src)',
+        platformDataType: 'string',
+        platformValue: '["https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/hoodie-with-logo-2.jpg"]',
+      }];
+    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedTags);
+    expect(convertedOndcResponse).toStrictEqual(
+      {
+        descriptor: {
+          images: [
+            'https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/hoodie-with-logo-2.jpg',
+          ],
+        },
+      },
+    );
+  });
+
   it('should convert platform item id to ondc item id ', async () => {
-    const config = [
+    const ondcMatchedTags = [
       {
         ondc: 'id',
         ondcDataType: 'string',
         platform: '.id',
         platformDataType: 'number',
+        platformValue: 52,
       }];
-    const ondcMapper = new OndcItemMapper(config);
-    const ondcMatchedTags = await ondcMapper.map({
-      id: 52,
-    });
     const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedTags);
     expect(convertedOndcResponse).toStrictEqual(
       {
@@ -27,18 +43,13 @@ describe('OndcConvertor', () => {
   });
 
   it('should convert platform item name to ondc item name ', async () => {
-    const config = [{
+    const ondcMatchedTags = [{
       ondc: 'descriptor.name',
       ondcDataType: 'string',
       platform: '.name',
       platformDataType: 'string',
+      platformValue: 'XYZ',
     }];
-    const ondcMapper = new OndcItemMapper(
-      config,
-    );
-    const ondcMatchedTags = await ondcMapper.map({
-      name: 'XYZ',
-    });
     const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedTags);
     expect(convertedOndcResponse).toStrictEqual(
       {
@@ -49,20 +60,43 @@ describe('OndcConvertor', () => {
     );
   });
   it('should convert platform items to ondc items ', async () => {
-    const ondcMapper = new OndcItemMapper(platformMapperConfig);
-    const ondcMatchedTags = await ondcMapper.map({
-      id: 52,
-      name: 'XYZ',
-      parent_id: 13,
-      images: [{
-        src: 'xyz.png',
-      }],
-      categories: [
-        {
-          id: 20,
-        },
-      ],
-    });
+    const ondcMatchedTags = [
+      {
+        ondc: 'id',
+        ondcDataType: 'string',
+        platform: '.id',
+        platformDataType: 'number',
+        platformValue: '52',
+      },
+      {
+        ondc: 'parent_item_id',
+        ondcDataType: 'string',
+        platform: '.parent_id',
+        platformDataType: 'number',
+        platformValue: '13',
+      },
+      {
+        ondc: 'descriptor.name',
+        ondcDataType: 'string',
+        platform: '.name',
+        platformDataType: 'string',
+        platformValue: 'XYZ',
+      },
+      {
+        ondc: 'descriptor.images',
+        ondcDataType: 'string',
+        platform: '.images[].src',
+        platformDataType: 'string',
+        platformValue: 'xyz.png',
+      },
+      {
+        ondc: 'category_id',
+        ondcDataType: 'string',
+        platform: '.categories[0].id',
+        platformDataType: 'number',
+        platformValue: '20',
+      },
+    ];
     const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedTags);
     expect(convertedOndcResponse)
       .toStrictEqual(

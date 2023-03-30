@@ -18,9 +18,9 @@
       "platformDataType": "string"
     },
     {
-      "ondc": "descriptor.images",
-      "ondcDataType": "string",
-      "platform": ".images[0].src",
+      "ondc":  "descriptor.images",
+      "ondcDataType": "",
+      "platform": ".images | map(.src)",
       "platformDataType": "string"
     },
     {

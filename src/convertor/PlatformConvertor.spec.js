@@ -197,7 +197,9 @@ describe('PlatformConvertor', () => {
       id: '52',
       descriptor: {
         name: 'T-shirt',
-        images: 'https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/hoodie-with-logo-2.jpg',
+        images: [
+          'https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/hoodie-with-logo-2.jpg',
+        ],
         long_desc: '<p><img class="alignnone size-medium wp-image-53" src="https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/tshit-240x300.webp" alt="" width="240" height="300" /></p>\n',
         short_desc: '<p>Hoodie in sweatshirt fabric made from a cotton blend. This is a simple product.</p>\n',
       },

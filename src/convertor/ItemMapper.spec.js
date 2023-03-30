@@ -2,9 +2,9 @@ import {
   it, expect, describe,
 } from 'vitest';
 import platformMapperConfig from '../resource/test/expectedMapperOutput.json';
-import OndcItemMapper from './OndcItemMapper';
+import ItemMapper from './ItemMapper';
 
-describe('OndcItemMapper', () => {
+describe('ItemMapper', () => {
   it('should match ondc string to platform string ', async () => {
     const responseWithName = {
       name: 'XYZ',
@@ -15,8 +15,8 @@ describe('OndcItemMapper', () => {
       platform: '.name',
       platformDataType: 'string',
     }];
-    const ondcItemMapper = new OndcItemMapper(config);
-    const mappedNameValue = await ondcItemMapper.map(responseWithName);
+    const itemMapper = new ItemMapper(config);
+    const mappedNameValue = await itemMapper.map(responseWithName);
     expect(mappedNameValue).toStrictEqual(
       [
         {
@@ -40,8 +40,8 @@ describe('OndcItemMapper', () => {
         platform: '.id',
         platformDataType: 'number',
       }];
-    const ondcItemMapper = new OndcItemMapper(config);
-    const mappedIdValue = await ondcItemMapper.map(responseWithId);
+    const itemMapper = new ItemMapper(config);
+    const mappedIdValue = await itemMapper.map(responseWithId);
     expect(mappedIdValue).toStrictEqual(
       [
         {
@@ -63,19 +63,19 @@ describe('OndcItemMapper', () => {
     const config = [{
       ondc: 'descriptor.images',
       ondcDataType: 'string',
-      platform: '.images[0].src',
+      platform: '.images[].src',
       platformDataType: 'string',
     }];
-    const ondcItemMapper = new OndcItemMapper(
+    const itemMapper = new ItemMapper(
       config,
     );
-    const mappedImageSrcValue = await ondcItemMapper.map(responseWithImages);
+    const mappedImageSrcValue = await itemMapper.map(responseWithImages);
     expect(mappedImageSrcValue).toStrictEqual(
       [
         {
           ondc: 'descriptor.images',
           ondcDataType: 'string',
-          platform: '.images[0].src',
+          platform: '.images[].src',
           platformDataType: 'string',
           platformValue: 'xyz.png',
         },
@@ -96,10 +96,10 @@ describe('OndcItemMapper', () => {
       platform: '.categories[0].id',
       platformDataType: 'number',
     }];
-    const ondcItemMapper = new OndcItemMapper(
+    const itemMapper = new ItemMapper(
       config,
     );
-    const mappedCategoryIdValue = await ondcItemMapper.map(responseWithCategory);
+    const mappedCategoryIdValue = await itemMapper.map(responseWithCategory);
     expect(mappedCategoryIdValue).toStrictEqual(
       [
         {
@@ -126,10 +126,10 @@ describe('OndcItemMapper', () => {
         },
       ],
     };
-    const ondcItemMapper = new OndcItemMapper(
+    const itemMapper = new ItemMapper(
       platformMapperConfig,
     );
-    const mappedResponse = await ondcItemMapper.map(response);
+    const mappedResponse = await itemMapper.map(response);
     expect(mappedResponse)
       .toStrictEqual(
         [
@@ -156,10 +156,10 @@ describe('OndcItemMapper', () => {
           },
           {
             ondc: 'descriptor.images',
-            ondcDataType: 'string',
-            platform: '.images[0].src',
+            ondcDataType: '',
+            platform: '.images | map(.src)',
             platformDataType: 'string',
-            platformValue: 'xyz.png',
+            platformValue: '["xyz.png"]',
           },
           {
             ondc: 'category_id',

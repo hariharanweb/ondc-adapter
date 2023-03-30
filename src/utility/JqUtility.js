@@ -1,11 +1,13 @@
 import { run } from 'node-jq';
 
-export default class PlatformFormatter {
+export default class JqUtility {
   static async format(filter, inputJson) {
-    return JSON.parse(await run(
+    const res = await run(
       filter,
       inputJson,
       { input: 'json' },
-    ));
+    );
+    const ans = JSON.parse(res);
+    return ans;
   }
 }

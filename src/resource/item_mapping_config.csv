@@ -4,7 +4,7 @@ parent_item_id,string,.parent_id,number
 descriptor.name,string,.name,string
 descriptor.short_desc,string,.short_description,string
 descriptor.long_desc,string,.description,string
-descriptor.images,string,.images[0].src,string
+descriptor.images,,.images | map(.src),string
 price.value,string,.price,string
 price.maximum_value,string,.regular_price,string
 category_id,string,.categories[0].id,number
