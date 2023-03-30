@@ -1,16 +1,19 @@
 import jqUtility from '../utility/JqUtility';
+import LoggingService from '../utility/LoggingService';
+
+const logger = LoggingService.getLogger('OndcConvertor');
 
 export default class OndcConvertor {
   static generateOndcFilter(ondcMatchedTag, ondcDataType, platformTagValue) {
-    // console.log(`ondcMatchedTag: ${JSON.stringify(ondcMatchedTag)}`);
-    // console.log(`ondcDataType: ${ondcDataType}`);
-    // console.log(`platformTagValue: ${platformTagValue}`);
+    logger.debug(`ondcMatchedTag: ${JSON.stringify(ondcMatchedTag)}`);
+    logger.debug(`ondcDataType: ${ondcDataType}`);
+    logger.debug(`platformTagValue: ${platformTagValue}`);
     const ondcTagKeys = ondcMatchedTag.ondc.split('.');
     const ondcItemValue = `${platformTagValue} ${ondcDataType}`;
     const ondcFilter = `. | if ( ${ondcTagKeys.length} > 1) 
         then { ${ondcTagKeys[0]}: { ${ondcTagKeys[1]}: ${ondcItemValue} }}
         else { ${ondcTagKeys[0]} : ${ondcItemValue} } end`;
-    // console.log(`ondcFilter: ${ondcFilter}`);
+    logger.debug(`ondcFilter: ${ondcFilter}`);
     return ondcFilter;
   }
 
@@ -19,7 +22,7 @@ export default class OndcConvertor {
       ondcMatchedTags.map(async (ondcMatchedTag) => {
         const ondcDataType = ((ondcMatchedTag.ondcDataType === 'boolean' || ondcMatchedTag.ondcDataType === '' || ondcMatchedTag.platformValue === '')
           ? '' : `| to${ondcMatchedTag.ondcDataType}`);
-        // console.log(`ondcDataType: ${ondcDataType}`);
+        logger.debug(`ondcDataType: ${ondcDataType}`);
 
         const platformTagValue = ((ondcMatchedTag.ondcDataType === 'boolean' || ondcMatchedTag.ondcDataType === '')
           ? ondcMatchedTag.platformValue : `"${ondcMatchedTag.platformValue.toString().replace(/"/g, '\\"')}"`);

@@ -1,6 +1,9 @@
 import PlatformConfigMapper from '../configuration/PlatformConfigMapper';
 import ItemMapper from './ItemMapper';
 import OndcConvertor from './OndcConvertor';
+import LoggingService from '../utility/LoggingService';
+
+const logger = LoggingService.getLogger('PlatformConvertor');
 
 export default class PlatformConvertor {
   constructor(platformResponseJson) {
@@ -8,14 +11,14 @@ export default class PlatformConvertor {
   }
 
   async convert() {
+    logger.info(`PlatformResponseJson:  + ${this.platformResponseJson}`);
     const csvparser = new PlatformConfigMapper('src/resource/item_mapping_config.csv');
     const csvDataJson = await csvparser.parseCSV();
     const itemMapper = new ItemMapper(csvDataJson);
-    // will get the maching tag values , inputJSON, tagTobeFetched ,
     const ondcMatchedTags = await itemMapper.map(this.platformResponseJson);
-    // console.log(`ondcMatchedTags: ${JSON.stringify(ondcMatchedTags)}`);
-    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedTags);
-    // console.log(`convertedOndcResponse: ${JSON.stringify(convertedOndcResponse)}`);
-    return convertedOndcResponse;
+    logger.debug(`ondcMatchedTags: ${JSON.stringify(ondcMatchedTags)}`);
+    const ondcResponse = await OndcConvertor.convert(ondcMatchedTags);
+    logger.info(`Ondc Response: ${JSON.stringify(ondcResponse)}`);
+    return ondcResponse;
   }
 }

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "csv-parse": "^5.3.6",
+    "log4js": "^6.9.1",
     "node-jq": "^2.3.5"
   },
   "devDependencies": {
