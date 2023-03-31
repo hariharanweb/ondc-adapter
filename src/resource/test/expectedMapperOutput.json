@@ -1,0 +1,35 @@
+[
+    {
+      "ondc": "id",
+      "ondcDataType": "string",
+      "platform": ".id",
+      "platformDataType": "number"
+    },
+    {
+      "ondc": "parent_item_id",
+      "ondcDataType": "string",
+      "platform": ".parent_id",
+      "platformDataType": "number"
+    },
+    {
+      "ondc": "descriptor.name",
+      "ondcDataType": "string",
+      "platform": ".name",
+      "platformDataType": "string"
+    },
+    {
+      "ondc":  "descriptor.images",
+      "ondcDataType": "",
+      "platform": ".images | map(.src)",
+      "platformDataType": "string"
+    },
+    {
+      "ondc": "category_id",
+      "ondcDataType": "string",
+      "platform": ".categories[0].id",
+      "platformDataType": "number"
+    }
+  ]
+
+  
+

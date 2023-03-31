@@ -1,0 +1,6 @@
+ondc,ondcDataType,platform,platformDataType
+id,string,.id,number
+parent_item_id,string,.parent_id,number
+descriptor.name,string,.name,string
+descriptor.images,,.images | map(.src),string
+category_id,string,.categories[0].id,number

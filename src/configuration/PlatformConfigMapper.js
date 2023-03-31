@@ -12,7 +12,6 @@ export default class PlatformConfigMapper {
 
       const readStream = createReadStream(this.filePath);
 
-      // pipe the read stream through csv-parse to parse the CSV data
       readStream.pipe(parse({ delimiter: ',', columns: true, skip_empty_lines: true }))
         .on('data', (row) => {
           csvData.push(row);

@@ -2,18 +2,28 @@ import {
   it, expect, describe,
 } from 'vitest';
 import PlatformConfigMapper from './PlatformConfigMapper';
-import sample from '../resource/test/sample.json';
+import expectedMapperOutput from '../resource/test/expectedMapperOutput.json';
 
 describe('PlatformConfigMapper', () => {
   it('should test if csv file is called ', async () => {
-    const csvparser = new PlatformConfigMapper('src/resource/test/sample.csv');
+    const csvparser = new PlatformConfigMapper('src/resource/test/platformTestConfig.csv');
     const csvData = await csvparser.parseCSV();
-    expect(csvData).toHaveLength(3);
+    expect(csvData).toHaveLength(5);
+  });
+
+  it('should test if faulty csv file is throwing error ', async () => {
+    const csvparser = new PlatformConfigMapper('src/resource/test/testConfig.csv');
+    try {
+      await csvparser.parseCSV();
+      expect(false).toBeTruthy();
+    } catch (error) {
+      expect(true).toBeTruthy();
+    }
   });
 
   it('should test if csv file has been parsed to json result ', async () => {
-    const csvparser = new PlatformConfigMapper('src/resource/test/sample.csv');
+    const csvparser = new PlatformConfigMapper('src/resource/test/platformTestConfig.csv');
     const csvData = await csvparser.parseCSV();
-    expect(csvData).toStrictEqual(sample);
+    expect(csvData).toStrictEqual(expectedMapperOutput);
   });
 });
