@@ -17,25 +17,17 @@ export default class OndcConvertor {
     return ondcFilter;
   }
 
-  static async convert(ondcMatchedTags) {
-    const convertedOndcResponse = await Promise.all(
-      ondcMatchedTags.map(async (ondcMatchedTag) => {
-        const ondcDataType = ((ondcMatchedTag.ondcDataType === 'boolean' || ondcMatchedTag.ondcDataType === '' || ondcMatchedTag.platformValue === '')
-          ? '' : `| to${ondcMatchedTag.ondcDataType}`);
-        logger.debug(`ondcDataType: ${ondcDataType}`);
+  static generateOndcDataType(ondcMatchedTag) {
+    return ((ondcMatchedTag.ondcDataType === 'boolean' || ondcMatchedTag.ondcDataType === '' || ondcMatchedTag.platformValue === '')
+      ? '' : `| to${ondcMatchedTag.ondcDataType}`);
+  }
 
-        const platformTagValue = ((ondcMatchedTag.ondcDataType === 'boolean' || ondcMatchedTag.ondcDataType === '')
-          ? ondcMatchedTag.platformValue : `"${ondcMatchedTag.platformValue.toString().replace(/"/g, '\\"')}"`);
+  static generatePlatformTagValue(ondcMatchedTag) {
+    return ((ondcMatchedTag.ondcDataType === 'boolean' || ondcMatchedTag.ondcDataType === '')
+      ? ondcMatchedTag.platformValue : `"${ondcMatchedTag.platformValue.toString().replace(/"/g, '\\"')}"`);
+  }
 
-        const ondcFilter = OndcConvertor
-          .generateOndcFilter(ondcMatchedTag, ondcDataType, platformTagValue);
-        const inputJson = {};
-        return jqUtility.format(
-          ondcFilter,
-          inputJson,
-        );
-      }),
-    );
+  static generateOndcResponse(convertedOndcResponse) {
     let mergedOndcResponse = {};
     convertedOndcResponse.forEach((ondcTag) => {
       const entries = Object.entries(ondcTag);
@@ -51,5 +43,27 @@ export default class OndcConvertor {
       });
     });
     return mergedOndcResponse;
+  }
+
+  static async convert(ondcMatchedTags) {
+    const convertedOndcResponse = await Promise.all(
+      ondcMatchedTags.map((ondcMatchedTag) => {
+        const ondcDataType = OndcConvertor.generateOndcDataType(ondcMatchedTag);
+        logger.debug(`ondcDataType: ${ondcDataType}`);
+
+        const platformTagValue = OndcConvertor.generatePlatformTagValue(ondcMatchedTag);
+
+        const ondcFilter = OndcConvertor
+          .generateOndcFilter(ondcMatchedTag, ondcDataType, platformTagValue);
+
+        const inputJson = {};
+        return jqUtility.format(
+          ondcFilter,
+          inputJson,
+        );
+      }),
+    );
+
+    return OndcConvertor.generateOndcResponse(convertedOndcResponse);
   }
 }

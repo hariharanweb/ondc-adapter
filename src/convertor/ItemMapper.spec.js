@@ -54,7 +54,7 @@ describe('ItemMapper', () => {
       ],
     );
   });
-  it('should match ondc nested object to platform nested object ', async () => {
+  it('should match ondc array object to platform array object ', async () => {
     const responseWithImages = {
       images: [{
         src: 'xyz.png',

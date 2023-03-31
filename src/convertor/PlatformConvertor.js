@@ -15,9 +15,9 @@ export default class PlatformConvertor {
     const csvparser = new PlatformConfigMapper('src/resource/item_mapping_config.csv');
     const csvDataJson = await csvparser.parseCSV();
     const itemMapper = new ItemMapper(csvDataJson);
-    const ondcMatchedTags = await itemMapper.map(this.platformResponseJson);
-    logger.debug(`ondcMatchedTags: ${JSON.stringify(ondcMatchedTags)}`);
-    const ondcResponse = await OndcConvertor.convert(ondcMatchedTags);
+    const ondcMatchedValues = await itemMapper.map(this.platformResponseJson);
+    logger.debug(`ondcMatchedValues: ${JSON.stringify(ondcMatchedValues)}`);
+    const ondcResponse = await OndcConvertor.convert(ondcMatchedValues);
     logger.info(`Ondc Response: ${JSON.stringify(ondcResponse)}`);
     return ondcResponse;
   }
