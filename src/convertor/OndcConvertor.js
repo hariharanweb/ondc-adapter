@@ -17,19 +17,21 @@ export default class OndcConvertor {
     return ondcFilter;
   }
 
-  static generateOndcDataType(ondcMatchedValue) {
-    return ((ondcMatchedValue.ondcDataType === 'boolean' || ondcMatchedValue.ondcDataType === '' || ondcMatchedValue.platformValue === '')
-      ? '' : `| to${ondcMatchedValue.ondcDataType}`);
+  static getOndcDataType(ondcMatchedValue) {
+    const isDatatypeNotNeeded = (ondcMatchedValue.ondcDataType === 'boolean'
+    || ondcMatchedValue.ondcDataType === ''
+    || ondcMatchedValue.platformValue === '');
+    return isDatatypeNotNeeded ? '' : `| to${ondcMatchedValue.ondcDataType}`;
   }
 
-  static generatePlatformTagValue(ondcMatchedValue) {
+  static getPlatformTagValue(ondcMatchedValue) {
     return ((ondcMatchedValue.ondcDataType === 'boolean' || ondcMatchedValue.ondcDataType === '')
       ? ondcMatchedValue.platformValue : `"${ondcMatchedValue.platformValue.toString().replace(/"/g, '\\"')}"`);
   }
 
-  static generateOndcResponse(convertedOndcResponse) {
+  static generateOndcResponse(ondcResponseTags) {
     let mergedOndcResponse = {};
-    convertedOndcResponse.forEach((ondcTag) => {
+    ondcResponseTags.forEach((ondcTag) => {
       const entries = Object.entries(ondcTag);
       return entries.forEach(([key, val]) => {
         if (key in mergedOndcResponse) {
@@ -45,25 +47,27 @@ export default class OndcConvertor {
     return mergedOndcResponse;
   }
 
+  static generateOndcTag(ondcMatchedValue) {
+    const ondcDataType = OndcConvertor.getOndcDataType(ondcMatchedValue);
+    logger.debug(`ondcDataType: ${ondcDataType}`);
+
+    const platformTagValue = OndcConvertor.getPlatformTagValue(ondcMatchedValue);
+
+    const ondcFilter = OndcConvertor
+      .generateOndcFilter(ondcMatchedValue, ondcDataType, platformTagValue);
+
+    const inputJson = {};
+    return jqUtility.format(
+      ondcFilter,
+      inputJson,
+    );
+  }
+
   static async convert(ondcMatchedValues) {
-    const convertedOndcResponse = await Promise.all(
-      ondcMatchedValues.map((ondcMatchedValue) => {
-        const ondcDataType = OndcConvertor.generateOndcDataType(ondcMatchedValue);
-        logger.debug(`ondcDataType: ${ondcDataType}`);
-
-        const platformTagValue = OndcConvertor.generatePlatformTagValue(ondcMatchedValue);
-
-        const ondcFilter = OndcConvertor
-          .generateOndcFilter(ondcMatchedValue, ondcDataType, platformTagValue);
-
-        const inputJson = {};
-        return jqUtility.format(
-          ondcFilter,
-          inputJson,
-        );
-      }),
+    const ondcResponseTags = await Promise.all(
+      ondcMatchedValues.map((ondcMatchedValue) => OndcConvertor.generateOndcTag(ondcMatchedValue)),
     );
 
-    return OndcConvertor.generateOndcResponse(convertedOndcResponse);
+    return OndcConvertor.generateOndcResponse(ondcResponseTags);
   }
 }
