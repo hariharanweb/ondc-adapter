@@ -4,11 +4,11 @@ import LoggingService from '../utility/LoggingService';
 const logger = LoggingService.getLogger('OndcConvertor');
 
 export default class OndcConvertor {
-  static generateOndcFilter(ondcMatchedTag, ondcDataType, platformTagValue) {
-    logger.debug(`ondcMatchedTag: ${JSON.stringify(ondcMatchedTag)}`);
+  static generateOndcFilter(ondcMatchedValue, ondcDataType, platformTagValue) {
+    logger.debug(`ondcMatchedValue: ${JSON.stringify(ondcMatchedValue)}`);
     logger.debug(`ondcDataType: ${ondcDataType}`);
     logger.debug(`platformTagValue: ${platformTagValue}`);
-    const ondcTagKeys = ondcMatchedTag.ondc.split('.');
+    const ondcTagKeys = ondcMatchedValue.ondc.split('.');
     const ondcItemValue = `${platformTagValue} ${ondcDataType}`;
     const ondcFilter = `. | if ( ${ondcTagKeys.length} > 1) 
         then { ${ondcTagKeys[0]}: { ${ondcTagKeys[1]}: ${ondcItemValue} }}
@@ -17,14 +17,14 @@ export default class OndcConvertor {
     return ondcFilter;
   }
 
-  static generateOndcDataType(ondcMatchedTag) {
-    return ((ondcMatchedTag.ondcDataType === 'boolean' || ondcMatchedTag.ondcDataType === '' || ondcMatchedTag.platformValue === '')
-      ? '' : `| to${ondcMatchedTag.ondcDataType}`);
+  static generateOndcDataType(ondcMatchedValue) {
+    return ((ondcMatchedValue.ondcDataType === 'boolean' || ondcMatchedValue.ondcDataType === '' || ondcMatchedValue.platformValue === '')
+      ? '' : `| to${ondcMatchedValue.ondcDataType}`);
   }
 
-  static generatePlatformTagValue(ondcMatchedTag) {
-    return ((ondcMatchedTag.ondcDataType === 'boolean' || ondcMatchedTag.ondcDataType === '')
-      ? ondcMatchedTag.platformValue : `"${ondcMatchedTag.platformValue.toString().replace(/"/g, '\\"')}"`);
+  static generatePlatformTagValue(ondcMatchedValue) {
+    return ((ondcMatchedValue.ondcDataType === 'boolean' || ondcMatchedValue.ondcDataType === '')
+      ? ondcMatchedValue.platformValue : `"${ondcMatchedValue.platformValue.toString().replace(/"/g, '\\"')}"`);
   }
 
   static generateOndcResponse(convertedOndcResponse) {
@@ -45,16 +45,16 @@ export default class OndcConvertor {
     return mergedOndcResponse;
   }
 
-  static async convert(ondcMatchedTags) {
+  static async convert(ondcMatchedValues) {
     const convertedOndcResponse = await Promise.all(
-      ondcMatchedTags.map((ondcMatchedTag) => {
-        const ondcDataType = OndcConvertor.generateOndcDataType(ondcMatchedTag);
+      ondcMatchedValues.map((ondcMatchedValue) => {
+        const ondcDataType = OndcConvertor.generateOndcDataType(ondcMatchedValue);
         logger.debug(`ondcDataType: ${ondcDataType}`);
 
-        const platformTagValue = OndcConvertor.generatePlatformTagValue(ondcMatchedTag);
+        const platformTagValue = OndcConvertor.generatePlatformTagValue(ondcMatchedValue);
 
         const ondcFilter = OndcConvertor
-          .generateOndcFilter(ondcMatchedTag, ondcDataType, platformTagValue);
+          .generateOndcFilter(ondcMatchedValue, ondcDataType, platformTagValue);
 
         const inputJson = {};
         return jqUtility.format(

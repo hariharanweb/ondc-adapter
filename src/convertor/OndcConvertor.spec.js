@@ -5,7 +5,7 @@ import OndcConvertor from './OndcConvertor';
 
 describe('OndcConvertor', () => {
   it('should convert platform image to ondc image ', async () => {
-    const ondcMatchedTags = [
+    const ondcMatchedValues = [
       {
         ondc: 'descriptor.images',
         ondcDataType: '',
@@ -13,7 +13,7 @@ describe('OndcConvertor', () => {
         platformDataType: 'string',
         platformValue: '["https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/hoodie-with-logo-2.jpg"]',
       }];
-    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedTags);
+    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedValues);
     expect(convertedOndcResponse).toStrictEqual(
       {
         descriptor: {
@@ -26,7 +26,7 @@ describe('OndcConvertor', () => {
   });
 
   it('should convert platform item id to ondc item id ', async () => {
-    const ondcMatchedTags = [
+    const ondcMatchedValues = [
       {
         ondc: 'id',
         ondcDataType: 'string',
@@ -34,7 +34,7 @@ describe('OndcConvertor', () => {
         platformDataType: 'number',
         platformValue: 52,
       }];
-    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedTags);
+    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedValues);
     expect(convertedOndcResponse).toStrictEqual(
       {
         id: '52',
@@ -43,14 +43,14 @@ describe('OndcConvertor', () => {
   });
 
   it('should convert platform item name to ondc item name ', async () => {
-    const ondcMatchedTags = [{
+    const ondcMatchedValues = [{
       ondc: 'descriptor.name',
       ondcDataType: 'string',
       platform: '.name',
       platformDataType: 'string',
       platformValue: 'XYZ',
     }];
-    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedTags);
+    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedValues);
     expect(convertedOndcResponse).toStrictEqual(
       {
         descriptor: {
@@ -60,7 +60,7 @@ describe('OndcConvertor', () => {
     );
   });
   it('should convert platform items to ondc items ', async () => {
-    const ondcMatchedTags = [
+    const ondcMatchedValues = [
       {
         ondc: 'id',
         ondcDataType: 'string',
@@ -97,7 +97,7 @@ describe('OndcConvertor', () => {
         platformValue: '20',
       },
     ];
-    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedTags);
+    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedValues);
     expect(convertedOndcResponse)
       .toStrictEqual(
         {
