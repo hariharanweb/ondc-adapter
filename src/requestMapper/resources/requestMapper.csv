@@ -1,0 +1,7 @@
+ondc,ondcDataType,platform,platformDataType
+.id,string,id,number
+.descriptor.name,string,name,string              
+.descriptor.short_desc,string,short_description,string       
+.price.value,string,price,string                                  
+.price.listed_value,string,regular_price,string   
+
