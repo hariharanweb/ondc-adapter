@@ -1,7 +1,7 @@
 import {
   it, expect, describe,
 } from 'vitest';
-import OndcConvertor from './OndcConvertor';
+import OndcResponseConvertor from './OndcResponseConvertor.js';
 
 describe('OndcConvertor', () => {
   it('should convert platform image to ondc image ', async () => {
@@ -13,7 +13,7 @@ describe('OndcConvertor', () => {
         platformDataType: 'string',
         platformValue: '["https://woo-freely-maximum-nacho.wpcomstaging.com/wp-content/uploads/2023/03/hoodie-with-logo-2.jpg"]',
       }];
-    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedValues);
+    const convertedOndcResponse = await OndcResponseConvertor.convert(ondcMatchedValues);
     expect(convertedOndcResponse).toStrictEqual(
       {
         descriptor: {
@@ -34,7 +34,7 @@ describe('OndcConvertor', () => {
         platformDataType: 'number',
         platformValue: 52,
       }];
-    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedValues);
+    const convertedOndcResponse = await OndcResponseConvertor.convert(ondcMatchedValues);
     expect(convertedOndcResponse).toStrictEqual(
       {
         id: '52',
@@ -50,7 +50,7 @@ describe('OndcConvertor', () => {
       platformDataType: 'string',
       platformValue: 'XYZ',
     }];
-    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedValues);
+    const convertedOndcResponse = await OndcResponseConvertor.convert(ondcMatchedValues);
     expect(convertedOndcResponse).toStrictEqual(
       {
         descriptor: {
@@ -97,7 +97,7 @@ describe('OndcConvertor', () => {
         platformValue: '20',
       },
     ];
-    const convertedOndcResponse = await OndcConvertor.convert(ondcMatchedValues);
+    const convertedOndcResponse = await OndcResponseConvertor.convert(ondcMatchedValues);
     expect(convertedOndcResponse)
       .toStrictEqual(
         {

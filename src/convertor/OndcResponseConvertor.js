@@ -3,7 +3,7 @@ import LoggingService from '../utility/LoggingService';
 
 const logger = LoggingService.getLogger('OndcConvertor');
 
-export default class OndcConvertor {
+export default class OndcResponseConvertor {
   static generateOndcFilter(ondcMatchedValue, ondcDataType, platformTagValue) {
     logger.debug(`ondcMatchedValue: ${JSON.stringify(ondcMatchedValue)}`);
     logger.debug(`ondcDataType: ${ondcDataType}`);
@@ -48,12 +48,12 @@ export default class OndcConvertor {
   }
 
   static generateOndcTag(ondcMatchedValue) {
-    const ondcDataType = OndcConvertor.getOndcDataType(ondcMatchedValue);
+    const ondcDataType = OndcResponseConvertor.getOndcDataType(ondcMatchedValue);
     logger.debug(`ondcDataType: ${ondcDataType}`);
 
-    const platformTagValue = OndcConvertor.getPlatformTagValue(ondcMatchedValue);
+    const platformTagValue = OndcResponseConvertor.getPlatformTagValue(ondcMatchedValue);
 
-    const ondcFilter = OndcConvertor
+    const ondcFilter = OndcResponseConvertor
       .generateOndcFilter(ondcMatchedValue, ondcDataType, platformTagValue);
 
     const inputJson = {};
@@ -65,9 +65,11 @@ export default class OndcConvertor {
 
   static async convert(ondcMatchedValues) {
     const ondcResponseTags = await Promise.all(
-      ondcMatchedValues.map((ondcMatchedValue) => OndcConvertor.generateOndcTag(ondcMatchedValue)),
+      ondcMatchedValues.map(
+        (ondcMatchedValue) => OndcResponseConvertor.generateOndcTag(ondcMatchedValue),
+      ),
     );
 
-    return OndcConvertor.generateOndcResponse(ondcResponseTags);
+    return OndcResponseConvertor.generateOndcResponse(ondcResponseTags);
   }
 }
