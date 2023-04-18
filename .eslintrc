@@ -6,6 +6,8 @@
     },
     "rules": {
       "import/extensions": "off"
-    }
+    },
+  "parserOptions": {
+    "ecmaVersion": 2020
   }
-   
+  }
