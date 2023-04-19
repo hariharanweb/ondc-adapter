@@ -1,4 +1,4 @@
-import LoggingService from '../utility/LoggingService';
+import LoggingService from '../utility/LoggingService.js';
 
 const logger = LoggingService.getLogger('OndcConvertor');
 

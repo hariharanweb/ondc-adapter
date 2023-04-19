@@ -1,5 +1,5 @@
-import jqUtility from '../utility/JqUtility';
-import LoggingService from '../utility/LoggingService';
+import jqUtility from '../utility/JqUtility.js';
+import LoggingService from '../utility/LoggingService.js';
 
 const logger = LoggingService.getLogger('OndcConvertor');
 

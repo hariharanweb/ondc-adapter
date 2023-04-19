@@ -1,11 +1,11 @@
-import PlatformConfigMapper from '../configuration/PlatformConfigMapper';
-import ItemMapper from './ItemMapper';
+import PlatformConfigMapper from '../configuration/PlatformConfigMapper.js';
+import ItemMapper from './ItemMapper.js';
 import OndcResponseConvertor from './OndcResponseConvertor.js';
-import LoggingService from '../utility/LoggingService';
+import LoggingService from '../utility/LoggingService.js';
 
-const logger = LoggingService.getLogger('PlatformConvertor');
+const logger = LoggingService.getLogger('PlatformOnSearchConvertor');
 
-export default class PlatformConvertor {
+export default class PlatformOnSearchConvertor {
   constructor(platformResponseJson) {
     this.platformResponseJson = platformResponseJson;
   }
