@@ -1,11 +1,11 @@
 import {
   it, expect, describe,
 } from 'vitest';
-import PlatformConvertor from './PlatformConvertor';
+import PlatformOnSearchConvertor from './PlatformOnSearchConvertor.js';
 import platformResponse from '../resource/platformResponse.json';
 import expectedOndcResponse from '../resource/ondcResponse.json';
 
-describe('PlatformConvertor', () => {
+describe('PlatformOnSearchConvertor', () => {
   it('should convert one platform item to one ondc item according to given config ', async () => {
     const platformResponseItem = {
       id: 52,
@@ -213,16 +213,16 @@ describe('PlatformConvertor', () => {
       category_id: '1379',
       location_id: '',
     };
-    const platformConvertor = new PlatformConvertor(platformResponseItem);
-    const actualOndcItemJson = await platformConvertor.convert();
+    const platformConvertor = new PlatformOnSearchConvertor(platformResponseItem);
+    const actualOndcItemJson = await platformConvertor.convertPlatformItemToOndcItem();
     expect(actualOndcItemJson).toStrictEqual(expectedOndcItem);
   });
 
   it('should convert platform items to ondc items according to given config ', async () => {
     const ondcResponse = [];
     await Promise.all(platformResponse.map(async (platformResponseItem) => {
-      const platformConvertor = new PlatformConvertor(platformResponseItem);
-      const ondcResponseItem = await platformConvertor.convert();
+      const platformConvertor = new PlatformOnSearchConvertor(platformResponseItem);
+      const ondcResponseItem = await platformConvertor.convertPlatformItemToOndcItem();
       ondcResponse.push(ondcResponseItem);
     }));
     expect(ondcResponse.sort((itemA, itemB) => itemA.id - itemB.id))
