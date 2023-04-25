@@ -1,7 +1,7 @@
 import {
   it, expect, describe,
 } from 'vitest';
-import PlatformSearchConvertor from './PlatformSearchGenerator.js';
+import PlatformSearchConvertor from './PlatformSearch.js';
 
 describe('generateUrl', () => {
   it('should return default URL when all input properties are empty', () => {
@@ -12,7 +12,7 @@ describe('generateUrl', () => {
       categoryName: '',
     };
     const expectedOutput = 'https://woo-delightfully-coral-youth.wpcomstaging.com/wp-json/wc/v3/products?consumer_key=ck_ada5c597aa92323341a37a0b89a81477e7cce5c3&consumer_secret=cs_b273faa254fae759a69f3327fc8024a1a720ac04';
-    expect(PlatformSearchConvertor.generateUrl(inputObject)).toEqual(expectedOutput);
+    expect(PlatformSearchConvertor.generateRequest(inputObject)).toEqual(expectedOutput);
   });
 
   it('should return search URL when productName is specified', () => {
@@ -23,7 +23,7 @@ describe('generateUrl', () => {
       categoryName: '',
     };
     const expectedOutput = 'https://woo-delightfully-coral-youth.wpcomstaging.com/wp-json/wc/v3/products?consumer_key=ck_ada5c597aa92323341a37a0b89a81477e7cce5c3&consumer_secret=cs_b273faa254fae759a69f3327fc8024a1a720ac04&search=T-shirt';
-    expect(PlatformSearchConvertor.generateUrl(inputObject)).toEqual(expectedOutput);
+    expect(PlatformSearchConvertor.generateRequest(inputObject)).toEqual(expectedOutput);
   });
 
   it('should return product URL when productId is specified', () => {
@@ -34,7 +34,7 @@ describe('generateUrl', () => {
       categoryName: '',
     };
     const expectedOutput = 'https://woo-delightfully-coral-youth.wpcomstaging.com/wp-json/wc/v3/products/52?consumer_key=ck_ada5c597aa92323341a37a0b89a81477e7cce5c3&consumer_secret=cs_b273faa254fae759a69f3327fc8024a1a720ac04';
-    expect(PlatformSearchConvertor.generateUrl(inputObject)).toEqual(expectedOutput);
+    expect(PlatformSearchConvertor.generateRequest(inputObject)).toEqual(expectedOutput);
   });
 
   it('should return category URL when categoryId is specified', () => {
@@ -45,7 +45,7 @@ describe('generateUrl', () => {
       categoryName: '',
     };
     const expectedOutput = 'https://woo-delightfully-coral-youth.wpcomstaging.com/wp-json/wc/v3/products?consumer_key=ck_ada5c597aa92323341a37a0b89a81477e7cce5c3&consumer_secret=cs_b273faa254fae759a69f3327fc8024a1a720ac04&category=1382';
-    expect(PlatformSearchConvertor.generateUrl(inputObject)).toEqual(expectedOutput);
+    expect(PlatformSearchConvertor.generateRequest(inputObject)).toEqual(expectedOutput);
   });
 
   it('should return category search URL when categoryName is specified', () => {
@@ -56,6 +56,6 @@ describe('generateUrl', () => {
       categoryName: 'Snack',
     };
     const expectedOutput = 'https://woo-delightfully-coral-youth.wpcomstaging.com/wp-json/wc/v3/products/categories?consumer_key=ck_ada5c597aa92323341a37a0b89a81477e7cce5c3&consumer_secret=cs_b273faa254fae759a69f3327fc8024a1a720ac04&search=Snack';
-    expect(PlatformSearchConvertor.generateUrl(inputObject)).toEqual(expectedOutput);
+    expect(PlatformSearchConvertor.generateRequest(inputObject)).toEqual(expectedOutput);
   });
 });

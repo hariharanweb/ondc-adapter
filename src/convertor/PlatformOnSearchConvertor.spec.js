@@ -214,7 +214,7 @@ describe('PlatformOnSearchConvertor', () => {
       location_id: '',
     };
     const platformConvertor = new PlatformOnSearchConvertor(platformResponseItem);
-    const actualOndcItemJson = await platformConvertor.convert();
+    const actualOndcItemJson = await platformConvertor.convertPlatformItemToOndcItem();
     expect(actualOndcItemJson).toStrictEqual(expectedOndcItem);
   });
 
@@ -222,7 +222,7 @@ describe('PlatformOnSearchConvertor', () => {
     const ondcResponse = [];
     await Promise.all(platformResponse.map(async (platformResponseItem) => {
       const platformConvertor = new PlatformOnSearchConvertor(platformResponseItem);
-      const ondcResponseItem = await platformConvertor.convert();
+      const ondcResponseItem = await platformConvertor.convertPlatformItemToOndcItem();
       ondcResponse.push(ondcResponseItem);
     }));
     expect(ondcResponse.sort((itemA, itemB) => itemA.id - itemB.id))

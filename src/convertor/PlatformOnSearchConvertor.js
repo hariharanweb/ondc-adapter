@@ -10,7 +10,7 @@ export default class PlatformOnSearchConvertor {
     this.platformResponseJson = platformResponseJson;
   }
 
-  async convert() {
+  async convertPlatformItemToOndcItem() {
     logger.info(`PlatformResponseJson:  + ${this.platformResponseJson}`);
     const csvparser = new PlatformConfigMapper('src/resource/item_mapping_config.csv');
     const csvDataJson = await csvparser.parseCSV();
@@ -19,6 +19,16 @@ export default class PlatformOnSearchConvertor {
     logger.debug(`ondcMatchedValues: ${JSON.stringify(ondcMatchedValues)}`);
     const ondcResponse = await OndcResponseConvertor.convert(ondcMatchedValues);
     logger.info(`Ondc Response: ${JSON.stringify(ondcResponse)}`);
+    return ondcResponse;
+  }
+
+  static async convertPlatformItemArrayToOndcItemArray(platformItem) {
+    const ondcResponse = [];
+    await Promise.all(JSON.parse(platformItem).map(async (platformResponseItem) => {
+      const platformConvertor = new PlatformOnSearchConvertor(platformResponseItem);
+      const ondcResponseItem = await platformConvertor.convertPlatformItemToOndcItem();
+      ondcResponse.push(ondcResponseItem);
+    }));
     return ondcResponse;
   }
 }

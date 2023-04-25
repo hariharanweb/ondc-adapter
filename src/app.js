@@ -1,10 +1,12 @@
 import express from 'express';
 import * as dotenv from 'dotenv';
 import SearchController from './controller/SearchController.js';
+import LoggingService from './utility/LoggingService';
 
 dotenv.config();
 const app = express();
 const port = 3000;
+const logger = LoggingService.getLogger('App');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,5 +16,5 @@ app.get('/', (req, res) => {
 });
 app.post('/search', SearchController.search);
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  logger.info(`Example app listening on port ${port}`);
 });
