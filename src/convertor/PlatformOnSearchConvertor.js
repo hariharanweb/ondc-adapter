@@ -24,7 +24,7 @@ export default class PlatformOnSearchConvertor {
 
   static async convertPlatformItemArrayToOndcItemArray(platformItem) {
     const ondcResponse = [];
-    await Promise.all(JSON.parse(platformItem).map(async (platformResponseItem) => {
+    await Promise.all(platformItem.map(async (platformResponseItem) => {
       const platformConvertor = new PlatformOnSearchConvertor(platformResponseItem);
       const ondcResponseItem = await platformConvertor.convertPlatformItemToOndcItem();
       ondcResponse.push(ondcResponseItem);
