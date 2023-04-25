@@ -1,7 +1,7 @@
 import express from 'express';
 import * as dotenv from 'dotenv';
 import SearchController from './controller/SearchController.js';
-import LoggingService from './utility/LoggingService';
+import LoggingService from './utility/LoggingService.js';
 
 dotenv.config();
 const app = express();
